@@ -1,0 +1,1494 @@
+{
+ "main": [
+  {
+   "label": "About IPC",
+   "to": "/about-us",
+   "columns": [
+    {
+     "heading": "The Commission",
+     "items": [
+      {
+       "label": "About IPC",
+       "to": "/about-us/about-ipc",
+       "children": [
+        {
+         "label": "Formation of IPC",
+         "to": "/about-us/about-ipc/formation-of-ipc"
+        },
+        {
+         "label": "Composition of IPC",
+         "to": "/about-us/about-ipc/composition-of-ipc"
+        },
+        {
+         "label": "Annual Reports",
+         "to": "/about-us/about-ipc/annual-reports"
+        },
+        {
+         "label": "Minutes of Meeting (MoM)",
+         "to": "/about-us/about-ipc/minutes-of-meeting-mom"
+        },
+        {
+         "label": "Indian Pharmacopoeia Laboratory (IPL)",
+         "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl",
+         "children": [
+          {
+           "label": "New Drugs Testing",
+           "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl/new-drugs-testing"
+          },
+          {
+           "label": "Analytical Support for skill development & drug discovery",
+           "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl/analytical-support-for-skill-development-drug-discovery"
+          }
+         ]
+        },
+        {
+         "label": "IPC BYE LAWS",
+         "to": "/about-us/about-ipc/ipc-bye-laws"
+        },
+        {
+         "label": "Mission, Vision and Objectives of IPC",
+         "to": "/about-us/about-ipc/objectives-of-ipc"
+        },
+        {
+         "label": "CITIZEN CHARTER",
+         "to": "/about-us/about-ipc/citizen-charter"
+        }
+       ]
+      },
+      {
+       "label": "Organisational Chart of Indian Pharmacopoeia Commission",
+       "to": "/about-us/organisational-chart"
+      },
+      {
+       "label": "Accreditation/ Certification",
+       "to": "/about-us/accreditation-certification"
+      },
+      {
+       "label": "Expert Committees & Working Groups",
+       "to": "/about-us/expert-committees-working-groups"
+      },
+      {
+       "label": "MOU/Collaborations/Achievements",
+       "to": "/about-us/mou-collaborations-achievements"
+      },
+      {
+       "label": "List of Employees",
+       "to": "/about-us/list-of-employees"
+      }
+     ]
+    },
+    {
+     "heading": "Leadership",
+     "items": [
+      {
+       "label": "Message of the Hon'ble Union Minister of Health & Family Welfare and Chemicals & Fertilizers",
+       "to": "/about-us/message-from-minister-of-health-family-welfare-and-chemicals-fertilizers"
+      },
+      {
+       "label": "Message of the Hon'ble Minister of State for Health & Family Welfare and Chemicals & Fertilizers",
+       "to": "/about-us/message-of-the-hon-ble-minister-of-state-for-health-family-welfare-and-chemicals-fertilizers"
+      },
+      {
+       "label": "Secretary-cum-Scientific Director",
+       "to": "/about-us/message-from-the-secretary-cum-scientific-director"
+      }
+     ]
+    },
+    {
+     "heading": "Divisions",
+     "items": [
+      {
+       "label": "All Divisions",
+       "to": "/about-us/departments",
+       "children": [
+        {
+         "label": "Administration",
+         "to": "/about-us/departments/administration"
+        },
+        {
+         "label": "Analytical Research & Development (AR&D)",
+         "to": "/about-us/departments/analytical-research-development-ar-d",
+         "children": [
+          {
+           "label": "Expression of Interest (EoI) for Verification/Testing of Indian Pharmacopoeia (IP) Monographs",
+           "to": "/about-us/departments/analytical-research-development-ar-d/expression-of-interest-eoi-for-verification-testing-of-indian-pharmacopoeia-ip-monographs"
+          }
+         ]
+        },
+        {
+         "label": "Biologics",
+         "to": "/about-us/departments/biologics"
+        },
+        {
+         "label": "Finance & Accounting",
+         "to": "/about-us/departments/finance-accounting",
+         "children": [
+          {
+           "label": "Budget",
+           "to": "/about-us/departments/finance-accounting/budget"
+          },
+          {
+           "label": "Cash & Accounts",
+           "to": "/about-us/departments/finance-accounting/cash-accounts"
+          },
+          {
+           "label": "Audit",
+           "to": "/about-us/departments/finance-accounting/audit"
+          }
+         ]
+        },
+        {
+         "label": "Library & Information Division",
+         "to": "/about-us/departments/library-information-centre"
+        },
+        {
+         "label": "Microbiology",
+         "to": "/about-us/departments/microbiology"
+        },
+        {
+         "label": "Pharmacovigilance Programme of India (PvPI)",
+         "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme"
+        },
+        {
+         "label": "Phytopharmaceuticals",
+         "to": "/about-us/departments/phytopharmaceuticals"
+        },
+        {
+         "label": "Pharmacology",
+         "to": "/about-us/departments/pharmacology"
+        },
+        {
+         "label": "Publication",
+         "to": "/about-us/departments/publication"
+        },
+        {
+         "label": "Quality Assurance",
+         "to": "/about-us/departments/quality-assurance",
+         "children": [
+          {
+           "label": "Quality Manual of the IP Commission",
+           "to": "/about-us/departments/quality-assurance/overview-of-quality-assurance-department"
+          },
+          {
+           "label": "Accreditation & Certification",
+           "to": "/about-us/departments/quality-assurance/accreditation-certification"
+          },
+          {
+           "label": "Proficiency Testing Division",
+           "to": "/about-us/departments/quality-assurance/proficiency-testing-division"
+          },
+          {
+           "label": "Training & Skill Development",
+           "to": "/about-us/departments/quality-assurance/training-skill-development"
+          },
+          {
+           "label": "Other Activities",
+           "to": "/about-us/departments/quality-assurance/other-activities"
+          },
+          {
+           "label": "Expression of Interest (EOI) form for the testing laboratories to validate the IP Reference Substances (IPRS)",
+           "to": "/about-us/departments/quality-assurance/expression-of-interest-eoi-form-for-the-testing-laboratories-to-validate-the-ip-reference-substances-iprs"
+          }
+         ]
+        },
+        {
+         "label": "Reference Standard",
+         "to": "/about-us/departments/reference-standard"
+        },
+        {
+         "label": "Supply Chain & Maintenance Management",
+         "to": "/about-us/departments/store"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "Media & Contact",
+     "items": [
+      {
+       "label": "Events",
+       "to": "/about-us/events"
+      },
+      {
+       "label": "Gallery",
+       "to": "/about-us/media-new",
+       "children": [
+        {
+         "label": "Virtual Tour of IPC",
+         "to": "/about-us/media-new/virtual-tour-of-ipc"
+        },
+        {
+         "label": "Photo Gallery",
+         "to": "/about-us/media-new/photo-gallery"
+        },
+        {
+         "label": "Progress of ALRC",
+         "to": "/about-us/media-new/progress-of-alrc"
+        },
+        {
+         "label": "Press Release",
+         "to": "/about-us/media-new/press-release"
+        },
+        {
+         "label": "News & Highlights",
+         "to": "/news-highlights"
+        },
+        {
+         "label": "IPC in News & Media",
+         "to": "/about-us/media-new/ipc-in-news-media"
+        }
+       ]
+      },
+      {
+       "label": "Contact Us",
+       "to": "/about-us/contact-us",
+       "children": [
+        {
+         "label": "Route Map of IPC",
+         "to": "/about-us/contact-us/route-map-of-ipc"
+        },
+        {
+         "label": "Social Media Accounts of IPC",
+         "to": "/about-us/contact-us/facebook-twitter-youtube"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Publications & Standards",
+   "columns": [
+    {
+     "heading": "Indian Pharmacopoeia",
+     "items": [
+      {
+       "label": "Indian Pharmacopoeia (IP)",
+       "to": "/mandates/indian-pharmacopoeia",
+       "children": [
+        {
+         "label": "About IP",
+         "to": "/mandates/indian-pharmacopoeia/about-ip"
+        },
+        {
+         "label": "General Notices of IP",
+         "to": "/mandates/indian-pharmacopoeia/general-notices-of-ip"
+        },
+        {
+         "label": "Indian Pharmacopoeia 2026",
+         "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-ip-2026"
+        },
+        {
+         "label": "Indian Pharmacopoeia 2022",
+         "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2022"
+        },
+        {
+         "label": "Indian Pharmacopoeia 2014 and its Addenda",
+         "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2014-and-its-addenda"
+        },
+        {
+         "label": "Indian Pharmacopoeia 2018 and its Addenda",
+         "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2018-and-its-addenda"
+        },
+        {
+         "label": "Guidance Document for Drafting and Formatting of Monographs for Indian Pharmacopoeia",
+         "to": "/mandates/indian-pharmacopoeia/guideline-for-formatting-of-monographs"
+        },
+        {
+         "label": "IP Review Process",
+         "to": "/mandates/indian-pharmacopoeia/ip-review-process"
+        },
+        {
+         "label": "Stakeholder Comments",
+         "to": "/mandates/indian-pharmacopoeia/monographs",
+         "children": [
+          {
+           "label": "Draft New General Chapter / Monographs - For Comments",
+           "to": "/mandates/indian-pharmacopoeia/monographs/monographs-under-preparation"
+          },
+          {
+           "label": "Amendments Proposed to IP 2026 - For Comment",
+           "to": "/mandates/indian-pharmacopoeia/monographs/monographs-for-comments"
+          }
+         ]
+        },
+        {
+         "label": "Monographs Inclusion-Exclusion Criteria",
+         "to": "/mandates/indian-pharmacopoeia/monographs-inclusion-exclusion-criteria"
+        },
+        {
+         "label": "Distribution Network for IP",
+         "to": "/mandates/indian-pharmacopoeia/distribution-network-for-ip"
+        },
+        {
+         "label": "Order IP",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=59"
+        },
+        {
+         "label": "Proforma Invoice of IP Publication",
+         "to": "/mandates/indian-pharmacopoeia/proforma-invoice-of-ip-publication"
+        },
+        {
+         "label": "Guidance Documents for Stakeholders",
+         "to": "/mandates/indian-pharmacopoeia/guidance-documents-for-stakeholders"
+        },
+        {
+         "label": "General Guidance for Phytopharmaceutical Drugs Development",
+         "to": "/mandates/indian-pharmacopoeia/general-guidance-for-phytopharmaceutical-drugs-development"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "National Formulary of India",
+     "items": [
+      {
+       "label": "National Formulary of India(NFI)",
+       "to": "/mandates/nfi",
+       "children": [
+        {
+         "label": "About NFI 2026",
+         "to": "/mandates/nfi/about-nfi"
+        },
+        {
+         "label": "Procurement of NFI 2026",
+         "to": "/mandates/nfi/procurement-of-nfi-2021"
+        },
+        {
+         "label": "Salient features of NFI",
+         "to": "/mandates/nfi/salient-features-of-nfi-2016"
+        },
+        {
+         "label": "Contents List for NFI",
+         "to": "/mandates/nfi/contents-list-for-nfi-2016"
+        },
+        {
+         "label": "Procurement of NFI 2016",
+         "to": "/mandates/nfi/procurement-of-nfi-2016"
+        },
+        {
+         "label": "Order NFI Online",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=60"
+        },
+        {
+         "label": "NFI Monograph/Chapter/Appendices Development Checklist (Version 1)",
+         "to": "/mandates/nfi/nfi-monograph-chapter-appendices-development-checklist-version-1"
+        },
+        {
+         "label": "Release of National Formulary of India 2026",
+         "to": "/mandates/nfi/release-of-national-formulary-of-india-2026"
+        },
+        {
+         "label": "National Formulary of India (NFI) 2021 - Amendment/Errata Lists",
+         "to": "/mandates/nfi/national-formulary-of-india-nfi-2021-amendment-errata-lists"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "Reference Substances",
+     "items": [
+      {
+       "label": "IP Reference Substances (IPRS) & Impurity",
+       "to": "/mandates/national-formulary-of-india-nfi",
+       "children": [
+        {
+         "label": "About IPRS",
+         "to": "/mandates/national-formulary-of-india-nfi/about-iprs"
+        },
+        {
+         "label": "List of IP Reference Substances available at IPC, Ghaziabad",
+         "href": "https://www.ipc.gov.in/images/List-of-IP-Reference-Substances-07-OCT-2026_Teriparatide-added.pdf",
+         "file": "pdf"
+        },
+        {
+         "label": "List of Impurities available at IPC, Ghaziabad",
+         "href": "https://www.ipc.gov.in/images/IMP-RS_01-09-2026.pdf",
+         "file": "pdf"
+        },
+        {
+         "label": "List of IP Phytochemical Reference Substances available at IPC, Ghaziabad",
+         "to": "/mandates/national-formulary-of-india-nfi/list-of-ip-phytochemical-reference-substances-available-at-ipc,-ghaziabad"
+        },
+        {
+         "label": "IP Prednisone Tablet (Dissolution Apparatus Calibrator) is available at IPC, Ghaziabad",
+         "to": "/mandates/national-formulary-of-india-nfi/ip-prednisone-tablet-dissolution-apparatus-calibrator-is-available-at-ipc,-ghaziabad"
+        },
+        {
+         "label": "List of Botanical Reference Substances available at IPC, Ghaziabad",
+         "href": "https://www.ipc.gov.in/images/pdf/File788.pdf",
+         "file": "pdf"
+        },
+        {
+         "label": "IPRS Biologicals",
+         "to": "/mandates/national-formulary-of-india-nfi/reference-standard-biotech-product-available-at-nib,-noida"
+        },
+        {
+         "label": "Supply Order Form for IPRS and Impurity",
+         "href": "https://www.ipc.gov.in/images/pdf/File298.pdf",
+         "file": "pdf"
+        },
+        {
+         "label": "Effective use of IPRS",
+         "to": "/mandates/national-formulary-of-india-nfi/effective-use-of-iprs"
+        },
+        {
+         "label": "Protocol of IP Prednisone Tablet for Dissolution Apparatus Calibration",
+         "href": "https://www.ipc.gov.in/images/pdf/IP_Prednisone_-9583111884.pdf",
+         "file": "pdf"
+        },
+        {
+         "label": "Reference Microbial Cultures available at MTCC, Chandigarh",
+         "to": "/mandates/national-formulary-of-india-nfi/reference-microbial-cultures-available-at-mtcc,-chandigarh"
+        },
+        {
+         "label": "Order IPRS Online",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Programmes",
+   "columns": [
+    {
+     "heading": "Pharmacovigilance",
+     "items": [
+      {
+       "label": "Pharmacovigilance Programme of India (PvPI)",
+       "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme",
+       "children": [
+        {
+         "label": "About Us",
+         "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme"
+        },
+        {
+         "label": "ADR Reporting Tools",
+         "to": "/mandates/pvpi/adr-reporting"
+        },
+        {
+         "label": "Training and Education",
+         "to": "/mandates/pvpi/training-and-education"
+        },
+        {
+         "label": "Publications",
+         "to": "/mandates/pvpi/publications"
+        },
+        {
+         "label": "PvPI Toolkit",
+         "to": "/mandates/pvpi/pvpi-toolkit"
+        },
+        {
+         "label": "News & Events",
+         "to": "/mandates/pvpi/news-events"
+        },
+        {
+         "label": "PvPI Outcome",
+         "to": "/mandates/pvpi/pvpi-outcome"
+        },
+        {
+         "label": "Orders & Circulars",
+         "to": "/mandates/pvpi/orders-circulars"
+        },
+        {
+         "label": "ADR Monitoring Centers & Enrollment form for New AMC",
+         "to": "/mandates/pvpi/adr-monitoring-centers"
+        },
+        {
+         "label": "Haemovigilance Programme of India (HvPI)",
+         "href": "https://nib.gov.in/haemovigilance.aspx"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "Materiovigilance",
+     "items": [
+      {
+       "label": "Materiovigilance Programme of India (MvPI)",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi",
+       "children": [
+        {
+         "label": "About Us",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/about-us"
+        },
+        {
+         "label": "MvPI Toolkit",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-toolkit"
+        },
+        {
+         "label": "Resource Material",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-resource-material"
+        },
+        {
+         "label": "MDMC Updates",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mdmc-updates"
+        },
+        {
+         "label": "MvPI Internship Programme",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-internship-programme"
+        },
+        {
+         "label": "MDMC Enrolment form",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/enrolment-form-for-mvpi"
+        },
+        {
+         "label": "MAH Enrolment form",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mah-enrolment-form"
+        },
+        {
+         "label": "SOPs",
+         "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-sops"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "Capacity Building",
+     "items": [
+      {
+       "label": "Skill Development",
+       "to": "/mandates/skill-development"
+      },
+      {
+       "label": "Analytical Services",
+       "to": "/mandates/analytical-services"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Online Services",
+   "to": "/e-services",
+   "columns": [
+    {
+     "heading": "Online Services",
+     "items": [
+      {
+       "label": "Indian Pharmacopoeia",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=59"
+      },
+      {
+       "label": "IP Online",
+       "to": "/e-services/ip-online"
+      },
+      {
+       "label": "National Formulary of India (NFI)",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=60"
+      },
+      {
+       "label": "NFI Online",
+       "href": "https://nfionline.ipc.gov.in/"
+      },
+      {
+       "label": "Other Publications",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=74"
+      },
+      {
+       "label": "IP Reference Substances",
+       "to": "/e-services/iprs-impurities",
+       "children": [
+        {
+         "label": "IPRS",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_66"
+        },
+        {
+         "label": "Impurity Standards",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_62"
+        },
+        {
+         "label": "Phytopharmaceutical Reference Substances",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61"
+        },
+        {
+         "label": "IP Prednisone Tablet",
+         "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_65"
+        }
+       ]
+      },
+      {
+       "label": "Cough Syrup Testing-Export Sample",
+       "to": "/e-services/cough-syrup-testing-export-sample"
+      },
+      {
+       "label": "Supply Order Forms",
+       "to": "/e-services/supply-order-forms"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Harmonization",
+   "to": "/pharmacopoeial-harmonization"
+  },
+  {
+   "label": "Notices",
+   "columns": [
+    {
+     "heading": "Official Updates",
+     "items": [
+      {
+       "label": "News & Highlights",
+       "to": "/news-highlights"
+      },
+      {
+       "label": "Orders & Circulars",
+       "to": "/orders-circulars-notices",
+       "children": [
+        {
+         "label": "Orders/ Circulars & Notices",
+         "to": "/orders-circulars-notices/orders-circulars-notices"
+        }
+       ]
+      },
+      {
+       "label": "Tenders",
+       "to": "/tenders"
+      },
+      {
+       "label": "Careers",
+       "to": "/careers"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "More",
+   "columns": [
+    {
+     "heading": "Services & Information",
+     "items": [
+      {
+       "label": "Certification Services",
+       "to": "/icmed-certification"
+      },
+      {
+       "label": "Employees Corner",
+       "to": "/employees-corner",
+       "children": [
+        {
+         "label": "Application & Forms",
+         "to": "/employees-corner/application-forms"
+        }
+       ]
+      },
+      {
+       "label": "RTI",
+       "to": "/rti"
+      },
+      {
+       "label": "Related Website Links",
+       "to": "/related-website-links"
+      },
+      {
+       "label": "Phytopharmaceutical Drugs: General Guidance for Development",
+       "href": "https://www.ipc.gov.in/images/29.08.2025_Phytopharmaceutical-Drugs-General-Guidance-for-Development.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "Frequently Asked Questions",
+       "to": "/faq"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "raw": [
+  {
+   "label": "About Us",
+   "to": "/about-us",
+   "children": [
+    {
+     "label": "About IPC",
+     "to": "/about-us/about-ipc",
+     "children": [
+      {
+       "label": "Formation of IPC",
+       "to": "/about-us/about-ipc/formation-of-ipc"
+      },
+      {
+       "label": "Composition of IPC",
+       "to": "/about-us/about-ipc/composition-of-ipc"
+      },
+      {
+       "label": "Annual Reports",
+       "to": "/about-us/about-ipc/annual-reports"
+      },
+      {
+       "label": "Minutes of Meeting (MoM)",
+       "to": "/about-us/about-ipc/minutes-of-meeting-mom"
+      },
+      {
+       "label": "Indian Pharmacopoeia Laboratory (IPL)",
+       "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl",
+       "children": [
+        {
+         "label": "New Drugs Testing",
+         "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl/new-drugs-testing"
+        },
+        {
+         "label": "Analytical Support for skill development & drug discovery",
+         "to": "/about-us/about-ipc/indian-pharmacopoeia-laboratory-ipl/analytical-support-for-skill-development-drug-discovery"
+        }
+       ]
+      },
+      {
+       "label": "IPC BYE LAWS",
+       "to": "/about-us/about-ipc/ipc-bye-laws"
+      },
+      {
+       "label": "Mission, Vision and Objectives of IPC",
+       "to": "/about-us/about-ipc/objectives-of-ipc"
+      },
+      {
+       "label": "CITIZEN CHARTER",
+       "to": "/about-us/about-ipc/citizen-charter"
+      }
+     ]
+    },
+    {
+     "label": "Message of the Hon'ble Union Minister of Health & Family Welfare and Chemicals & Fertilizers",
+     "to": "/about-us/message-from-minister-of-health-family-welfare-and-chemicals-fertilizers"
+    },
+    {
+     "label": "Message of the Hon'ble Minister of State for Health & Family Welfare and Chemicals & Fertilizers",
+     "to": "/about-us/message-of-the-hon-ble-minister-of-state-for-health-family-welfare-and-chemicals-fertilizers"
+    },
+    {
+     "label": "Secretary-cum-Scientific Director",
+     "to": "/about-us/message-from-the-secretary-cum-scientific-director"
+    },
+    {
+     "label": "Organisational Chart of Indian Pharmacopoeia Commission",
+     "to": "/about-us/organisational-chart"
+    },
+    {
+     "label": "Accreditation/ Certification",
+     "to": "/about-us/accreditation-certification"
+    },
+    {
+     "label": "All Divisions",
+     "to": "/about-us/departments",
+     "children": [
+      {
+       "label": "Administration",
+       "to": "/about-us/departments/administration"
+      },
+      {
+       "label": "Analytical Research & Development (AR&D)",
+       "to": "/about-us/departments/analytical-research-development-ar-d",
+       "children": [
+        {
+         "label": "Expression of Interest (EoI) for Verification/Testing of Indian Pharmacopoeia (IP) Monographs",
+         "to": "/about-us/departments/analytical-research-development-ar-d/expression-of-interest-eoi-for-verification-testing-of-indian-pharmacopoeia-ip-monographs"
+        }
+       ]
+      },
+      {
+       "label": "Biologics",
+       "to": "/about-us/departments/biologics"
+      },
+      {
+       "label": "Finance & Accounting",
+       "to": "/about-us/departments/finance-accounting",
+       "children": [
+        {
+         "label": "Budget",
+         "to": "/about-us/departments/finance-accounting/budget"
+        },
+        {
+         "label": "Cash & Accounts",
+         "to": "/about-us/departments/finance-accounting/cash-accounts"
+        },
+        {
+         "label": "Audit",
+         "to": "/about-us/departments/finance-accounting/audit"
+        }
+       ]
+      },
+      {
+       "label": "Library & Information Division",
+       "to": "/about-us/departments/library-information-centre"
+      },
+      {
+       "label": "Microbiology",
+       "to": "/about-us/departments/microbiology"
+      },
+      {
+       "label": "Pharmacovigilance Programme of India (PvPI)",
+       "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme"
+      },
+      {
+       "label": "Phytopharmaceuticals",
+       "to": "/about-us/departments/phytopharmaceuticals"
+      },
+      {
+       "label": "Pharmacology",
+       "to": "/about-us/departments/pharmacology"
+      },
+      {
+       "label": "Publication",
+       "to": "/about-us/departments/publication"
+      },
+      {
+       "label": "Quality Assurance",
+       "to": "/about-us/departments/quality-assurance",
+       "children": [
+        {
+         "label": "Quality Manual of the IP Commission",
+         "to": "/about-us/departments/quality-assurance/overview-of-quality-assurance-department"
+        },
+        {
+         "label": "Accreditation & Certification",
+         "to": "/about-us/departments/quality-assurance/accreditation-certification"
+        },
+        {
+         "label": "Proficiency Testing Division",
+         "to": "/about-us/departments/quality-assurance/proficiency-testing-division"
+        },
+        {
+         "label": "Training & Skill Development",
+         "to": "/about-us/departments/quality-assurance/training-skill-development"
+        },
+        {
+         "label": "Other Activities",
+         "to": "/about-us/departments/quality-assurance/other-activities"
+        },
+        {
+         "label": "Expression of Interest (EOI) form for the testing laboratories to validate the IP Reference Substances (IPRS)",
+         "to": "/about-us/departments/quality-assurance/expression-of-interest-eoi-form-for-the-testing-laboratories-to-validate-the-ip-reference-substances-iprs"
+        }
+       ]
+      },
+      {
+       "label": "Reference Standard",
+       "to": "/about-us/departments/reference-standard"
+      },
+      {
+       "label": "Supply Chain & Maintenance Management",
+       "to": "/about-us/departments/store"
+      }
+     ]
+    },
+    {
+     "label": "List of Employees",
+     "to": "/about-us/list-of-employees"
+    },
+    {
+     "label": "Events",
+     "to": "/about-us/events"
+    },
+    {
+     "label": "Gallery",
+     "to": "/about-us/media-new",
+     "children": [
+      {
+       "label": "Virtual Tour of IPC",
+       "to": "/about-us/media-new/virtual-tour-of-ipc"
+      },
+      {
+       "label": "Photo Gallery",
+       "to": "/about-us/media-new/photo-gallery"
+      },
+      {
+       "label": "Progress of ALRC",
+       "to": "/about-us/media-new/progress-of-alrc"
+      },
+      {
+       "label": "Press Release",
+       "to": "/about-us/media-new/press-release"
+      },
+      {
+       "label": "News & Highlights",
+       "to": "/news-highlights"
+      },
+      {
+       "label": "IPC in News & Media",
+       "to": "/about-us/media-new/ipc-in-news-media"
+      }
+     ]
+    },
+    {
+     "label": "MOU/Collaborations/Achievements",
+     "to": "/about-us/mou-collaborations-achievements"
+    },
+    {
+     "label": "Expert Committees & Working Groups",
+     "to": "/about-us/expert-committees-working-groups"
+    },
+    {
+     "label": "Contact Us",
+     "to": "/about-us/contact-us",
+     "children": [
+      {
+       "label": "Route Map of IPC",
+       "to": "/about-us/contact-us/route-map-of-ipc"
+      },
+      {
+       "label": "Social Media Accounts of IPC",
+       "to": "/about-us/contact-us/facebook-twitter-youtube"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Products & Services",
+   "children": [
+    {
+     "label": "Indian Pharmacopoeia (IP)",
+     "to": "/mandates/indian-pharmacopoeia",
+     "children": [
+      {
+       "label": "About IP",
+       "to": "/mandates/indian-pharmacopoeia/about-ip"
+      },
+      {
+       "label": "General Notices of IP",
+       "to": "/mandates/indian-pharmacopoeia/general-notices-of-ip"
+      },
+      {
+       "label": "Indian Pharmacopoeia 2026",
+       "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-ip-2026"
+      },
+      {
+       "label": "Indian Pharmacopoeia 2022",
+       "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2022"
+      },
+      {
+       "label": "Indian Pharmacopoeia 2014 and its Addenda",
+       "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2014-and-its-addenda"
+      },
+      {
+       "label": "Indian Pharmacopoeia 2018 and its Addenda",
+       "to": "/mandates/indian-pharmacopoeia/indian-pharmacopoeia-2018-and-its-addenda"
+      },
+      {
+       "label": "Guidance Document for Drafting and Formatting of Monographs for Indian Pharmacopoeia",
+       "to": "/mandates/indian-pharmacopoeia/guideline-for-formatting-of-monographs"
+      },
+      {
+       "label": "IP Review Process",
+       "to": "/mandates/indian-pharmacopoeia/ip-review-process"
+      },
+      {
+       "label": "Stakeholder Comments",
+       "to": "/mandates/indian-pharmacopoeia/monographs",
+       "children": [
+        {
+         "label": "Draft New General Chapter / Monographs - For Comments",
+         "to": "/mandates/indian-pharmacopoeia/monographs/monographs-under-preparation"
+        },
+        {
+         "label": "Amendments Proposed to IP 2026 - For Comment",
+         "to": "/mandates/indian-pharmacopoeia/monographs/monographs-for-comments"
+        }
+       ]
+      },
+      {
+       "label": "Monographs Inclusion-Exclusion Criteria",
+       "to": "/mandates/indian-pharmacopoeia/monographs-inclusion-exclusion-criteria"
+      },
+      {
+       "label": "Distribution Network for IP",
+       "to": "/mandates/indian-pharmacopoeia/distribution-network-for-ip"
+      },
+      {
+       "label": "Order IP",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=59"
+      },
+      {
+       "label": "Proforma Invoice of IP Publication",
+       "to": "/mandates/indian-pharmacopoeia/proforma-invoice-of-ip-publication"
+      },
+      {
+       "label": "Guidance Documents for Stakeholders",
+       "to": "/mandates/indian-pharmacopoeia/guidance-documents-for-stakeholders"
+      },
+      {
+       "label": "General Guidance for Phytopharmaceutical Drugs Development",
+       "to": "/mandates/indian-pharmacopoeia/general-guidance-for-phytopharmaceutical-drugs-development"
+      }
+     ]
+    },
+    {
+     "label": "National Formulary of India(NFI)",
+     "to": "/mandates/nfi",
+     "children": [
+      {
+       "label": "About NFI 2026",
+       "to": "/mandates/nfi/about-nfi"
+      },
+      {
+       "label": "Procurement of NFI 2026",
+       "to": "/mandates/nfi/procurement-of-nfi-2021"
+      },
+      {
+       "label": "Salient features of NFI",
+       "to": "/mandates/nfi/salient-features-of-nfi-2016"
+      },
+      {
+       "label": "Contents List for NFI",
+       "to": "/mandates/nfi/contents-list-for-nfi-2016"
+      },
+      {
+       "label": "Procurement of NFI 2016",
+       "to": "/mandates/nfi/procurement-of-nfi-2016"
+      },
+      {
+       "label": "Order NFI Online",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=60"
+      },
+      {
+       "label": "NFI Monograph/Chapter/Appendices Development Checklist (Version 1)",
+       "to": "/mandates/nfi/nfi-monograph-chapter-appendices-development-checklist-version-1"
+      },
+      {
+       "label": "Release of National Formulary of India 2026",
+       "to": "/mandates/nfi/release-of-national-formulary-of-india-2026"
+      },
+      {
+       "label": "National Formulary of India (NFI) 2021 - Amendment/Errata Lists",
+       "to": "/mandates/nfi/national-formulary-of-india-nfi-2021-amendment-errata-lists"
+      }
+     ]
+    },
+    {
+     "label": "IP Reference Substances (IPRS) & Impurity",
+     "to": "/mandates/national-formulary-of-india-nfi",
+     "children": [
+      {
+       "label": "About IPRS",
+       "to": "/mandates/national-formulary-of-india-nfi/about-iprs"
+      },
+      {
+       "label": "List of IP Reference Substances available at IPC, Ghaziabad",
+       "href": "https://www.ipc.gov.in/images/List-of-IP-Reference-Substances-07-OCT-2026_Teriparatide-added.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "List of Impurities available at IPC, Ghaziabad",
+       "href": "https://www.ipc.gov.in/images/IMP-RS_01-09-2026.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "List of IP Phytochemical Reference Substances available at IPC, Ghaziabad",
+       "to": "/mandates/national-formulary-of-india-nfi/list-of-ip-phytochemical-reference-substances-available-at-ipc,-ghaziabad"
+      },
+      {
+       "label": "IP Prednisone Tablet (Dissolution Apparatus Calibrator) is available at IPC, Ghaziabad",
+       "to": "/mandates/national-formulary-of-india-nfi/ip-prednisone-tablet-dissolution-apparatus-calibrator-is-available-at-ipc,-ghaziabad"
+      },
+      {
+       "label": "List of Botanical Reference Substances available at IPC, Ghaziabad",
+       "href": "https://www.ipc.gov.in/images/pdf/File788.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "IPRS Biologicals",
+       "to": "/mandates/national-formulary-of-india-nfi/reference-standard-biotech-product-available-at-nib,-noida"
+      },
+      {
+       "label": "Supply Order Form for IPRS and Impurity",
+       "href": "https://www.ipc.gov.in/images/pdf/File298.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "Effective use of IPRS",
+       "to": "/mandates/national-formulary-of-india-nfi/effective-use-of-iprs"
+      },
+      {
+       "label": "Protocol of IP Prednisone Tablet for Dissolution Apparatus Calibration",
+       "href": "https://www.ipc.gov.in/images/pdf/IP_Prednisone_-9583111884.pdf",
+       "file": "pdf"
+      },
+      {
+       "label": "Reference Microbial Cultures available at MTCC, Chandigarh",
+       "to": "/mandates/national-formulary-of-india-nfi/reference-microbial-cultures-available-at-mtcc,-chandigarh"
+      },
+      {
+       "label": "Order IPRS Online",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61"
+      }
+     ]
+    },
+    {
+     "label": "Pharmacovigilance Programme of India (PvPI)",
+     "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme",
+     "children": [
+      {
+       "label": "About Us",
+       "to": "/mandates/pvpi/pharmacovigilance-skill-development-programme"
+      },
+      {
+       "label": "ADR Reporting Tools",
+       "to": "/mandates/pvpi/adr-reporting"
+      },
+      {
+       "label": "Training and Education",
+       "to": "/mandates/pvpi/training-and-education"
+      },
+      {
+       "label": "Publications",
+       "to": "/mandates/pvpi/publications"
+      },
+      {
+       "label": "PvPI Toolkit",
+       "to": "/mandates/pvpi/pvpi-toolkit"
+      },
+      {
+       "label": "News & Events",
+       "to": "/mandates/pvpi/news-events"
+      },
+      {
+       "label": "PvPI Outcome",
+       "to": "/mandates/pvpi/pvpi-outcome"
+      },
+      {
+       "label": "Orders & Circulars",
+       "to": "/mandates/pvpi/orders-circulars"
+      },
+      {
+       "label": "ADR Monitoring Centers & Enrollment form for New AMC",
+       "to": "/mandates/pvpi/adr-monitoring-centers"
+      },
+      {
+       "label": "Haemovigilance Programme of India (HvPI)",
+       "href": "https://nib.gov.in/haemovigilance.aspx"
+      }
+     ]
+    },
+    {
+     "label": "Materiovigilance Programme of India (MvPI)",
+     "to": "/mandates/materiovigilance-programme-of-india-mvpi",
+     "children": [
+      {
+       "label": "About Us",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/about-us"
+      },
+      {
+       "label": "MvPI Toolkit",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-toolkit"
+      },
+      {
+       "label": "Resource Material",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-resource-material"
+      },
+      {
+       "label": "MDMC Updates",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mdmc-updates"
+      },
+      {
+       "label": "MvPI Internship Programme",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-internship-programme"
+      },
+      {
+       "label": "MDMC Enrolment form",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/enrolment-form-for-mvpi"
+      },
+      {
+       "label": "MAH Enrolment form",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mah-enrolment-form"
+      },
+      {
+       "label": "SOPs",
+       "to": "/mandates/materiovigilance-programme-of-india-mvpi/mvpi-sops"
+      }
+     ]
+    },
+    {
+     "label": "Skill Development",
+     "to": "/mandates/skill-development"
+    },
+    {
+     "label": "Analytical Services",
+     "to": "/mandates/analytical-services"
+    }
+   ]
+  },
+  {
+   "label": "Pharmacopoeial Harmonization",
+   "to": "/pharmacopoeial-harmonization"
+  },
+  {
+   "label": "Orders & Circulars",
+   "to": "/orders-circulars-notices",
+   "children": [
+    {
+     "label": "Orders/ Circulars & Notices",
+     "to": "/orders-circulars-notices/orders-circulars-notices"
+    }
+   ]
+  },
+  {
+   "label": "Careers",
+   "to": "/careers"
+  },
+  {
+   "label": "Certification Services",
+   "to": "/icmed-certification"
+  },
+  {
+   "label": "Online Services",
+   "to": "/e-services",
+   "children": [
+    {
+     "label": "Indian Pharmacopoeia",
+     "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=59"
+    },
+    {
+     "label": "IP Online",
+     "to": "/e-services/ip-online"
+    },
+    {
+     "label": "National Formulary of India (NFI)",
+     "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=60"
+    },
+    {
+     "label": "NFI Online",
+     "href": "https://nfionline.ipc.gov.in/"
+    },
+    {
+     "label": "Other Publications",
+     "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=74"
+    },
+    {
+     "label": "IP Reference Substances",
+     "to": "/e-services/iprs-impurities",
+     "children": [
+      {
+       "label": "IPRS",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_66"
+      },
+      {
+       "label": "Impurity Standards",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_62"
+      },
+      {
+       "label": "Phytopharmaceutical Reference Substances",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61"
+      },
+      {
+       "label": "IP Prednisone Tablet",
+       "href": "https://www.ipc.gov.in/shop/index.php?route=product/category&path=61_65"
+      }
+     ]
+    },
+    {
+     "label": "Cough Syrup Testing-Export Sample",
+     "to": "/e-services/cough-syrup-testing-export-sample"
+    },
+    {
+     "label": "Supply Order Forms",
+     "to": "/e-services/supply-order-forms"
+    }
+   ]
+  },
+  {
+   "label": "Tenders",
+   "to": "/tenders"
+  },
+  {
+   "label": "Employees Corner",
+   "to": "/employees-corner",
+   "children": [
+    {
+     "label": "Application & Forms",
+     "to": "/employees-corner/application-forms"
+    }
+   ]
+  },
+  {
+   "label": "RTI",
+   "to": "/rti"
+  },
+  {
+   "label": "Related Website Links",
+   "to": "/related-website-links"
+  },
+  {
+   "label": "Phytopharmaceutical Drugs General Guidance for Development",
+   "href": "https://www.ipc.gov.in/images/29.08.2025_Phytopharmaceutical-Drugs-General-Guidance-for-Development.pdf",
+   "file": "pdf"
+  }
+ ],
+ "footer": [
+  {
+   "label": "Annual Reports",
+   "to": "/about-us/about-ipc/annual-reports"
+  },
+  {
+   "label": "Photo Gallery",
+   "to": "/about-us/media-new/photo-gallery"
+  },
+  {
+   "label": "Feedback",
+   "to": "/feedback-form"
+  },
+  {
+   "label": "FAQ",
+   "to": "/faq"
+  },
+  {
+   "label": "Contact Us",
+   "to": "/contact-us"
+  },
+  {
+   "label": "Help",
+   "to": "/help"
+  },
+  {
+   "label": "Site Map",
+   "to": "/site-map"
+  },
+  {
+   "label": "Disclaimer",
+   "to": "/disclaimer"
+  },
+  {
+   "label": "Copyright Policy",
+   "to": "/copyright-policy"
+  },
+  {
+   "label": "Terms & Conditions",
+   "to": "/terms-conditions"
+  },
+  {
+   "label": "Hyperlinking Policy",
+   "to": "/hyperlinking-policy"
+  },
+  {
+   "label": "Privacy Policy",
+   "to": "/privacy-policy"
+  }
+ ],
+ "related": [
+  {
+   "label": "Central Drugs Standard Control Organization",
+   "href": "http://www.cdsco.gov.in/"
+  },
+  {
+   "label": "Central Public Procurement",
+   "href": "https://eprocure.gov.in/cppp/"
+  },
+  {
+   "label": "Department of AYUSH",
+   "href": "http://indianmedicine.nic.in/"
+  },
+  {
+   "label": "Food Safety and Standards Authority of India",
+   "href": "http://fssai.gov.in/"
+  },
+  {
+   "label": "Health Management Information System (HMIS)",
+   "href": "https://nrhm-mis.nic.in/"
+  },
+  {
+   "label": "Indian code Information System",
+   "href": "http://indiacode.nic.in/"
+  },
+  {
+   "label": "Click here to subscribe IP Online.",
+   "href": "https://www.iponline.ipc.gov.in/"
+  },
+  {
+   "label": "Ministry of Health & Family Welfare",
+   "href": "https://www.mohfw.gov.in/"
+  },
+  {
+   "label": "Mother and Child Tracking System (MCTS)",
+   "href": "https://nrhm-mcts.nic.in/"
+  },
+  {
+   "label": "Haemovigilance Programme of India (HvPI)",
+   "href": "https://nib.gov.in/haemovigilance.aspx"
+  },
+  {
+   "label": "National Voters Service Portal(NVSP)",
+   "href": "http://www.nvsp.in/"
+  },
+  {
+   "label": "NRHM",
+   "href": "https://nhm.gov.in/index1.php?lang=1&level=1&lid=49&sublinkid=969"
+  }
+ ],
+ "library": [
+  {
+   "label": "Home",
+   "to": "/library-home"
+  },
+  {
+   "label": "About Us",
+   "to": "/library-about"
+  },
+  {
+   "label": "Sections",
+   "to": "/sections"
+  },
+  {
+   "label": "Collection",
+   "to": "/collections"
+  },
+  {
+   "label": "Services",
+   "to": "/services"
+  },
+  {
+   "label": "E-Resources",
+   "to": "/e-resources"
+  },
+  {
+   "label": "Contact Us",
+   "to": "/library-contact"
+  },
+  {
+   "label": "Download Forms",
+   "to": "/attachment"
+  },
+  {
+   "label": "Membership Forms",
+   "to": "/attachment/8-category-en/1119-membership-form"
+  },
+  {
+   "label": "Requisition Form (Books/Periodicals/Serials)",
+   "to": "/attachment/8-category-en/1140-requisition-form-books-periodicals-serials"
+  },
+  {
+   "label": "Frequently Asked Questions (Library & Information Centre)",
+   "to": "/faq-library-information-centre"
+  },
+  {
+   "label": "Library Publications",
+   "to": "/library-publication"
+  },
+  {
+   "label": "RULES & REGULATIONS OF LIBRARY",
+   "to": "/library-rules"
+  },
+  {
+   "label": "Membership",
+   "to": "/membership"
+  },
+  {
+   "label": "Newspapers",
+   "to": "/newspapers"
+  },
+  {
+   "label": "Periodicals/ Serials",
+   "to": "/periodicals"
+  }
+ ]
+}

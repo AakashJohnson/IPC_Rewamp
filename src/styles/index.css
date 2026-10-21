@@ -1,0 +1,412 @@
+@import 'tailwindcss';
+
+/* ============================================================================================
+   Institutional Precision — design tokens
+   ============================================================================================ */
+
+@theme {
+  --font-sans: 'Public Sans Variable', 'Noto Sans Devanagari', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+  --font-deva: 'Noto Sans Devanagari', 'Public Sans Variable', sans-serif;
+
+  --color-navy-950: #0a1a2c;
+  --color-navy-900: #10263f;
+  --color-navy-800: #193b59;
+  --color-navy-700: #24506f;
+  --color-navy-100: #e3eaf1;
+  --color-teal-800: #0f5a5a;
+  --color-teal-700: #12686a;
+  --color-teal-600: #167a78;
+  --color-teal-100: #dceeed;
+  --color-teal-50: #eef6f5;
+  --color-paper: #f8f7f3;
+  --color-paper-2: #f1efe8;
+  --color-ink: #0f1b2a;
+  --color-slate: #334155;
+  --color-muted: #566273;
+  --color-line: #e2e8ec;
+  --color-line-strong: #c9d3db;
+  --color-saffron: #c98942;
+  --color-saffron-700: #8f5517;
+  --color-green: #3f8065;
+  --color-green-700: #2f6a52;
+
+  --text-display: clamp(2.25rem, 1.55rem + 2.6vw, 3.75rem);
+  --text-display--line-height: 1.06;
+  --text-h1: clamp(2rem, 1.55rem + 1.7vw, 2.875rem);
+  --text-h1--line-height: 1.12;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.3vw, 2.625rem);
+  --text-h2--line-height: 1.15;
+  --text-h3: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  --text-h3--line-height: 1.3;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.45;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  --shadow-hair: 0 1px 0 rgb(16 38 63 / 0.06);
+  --shadow-lift: 0 1px 2px rgb(16 38 63 / 0.06), 0 8px 24px -12px rgb(16 38 63 / 0.18);
+  --shadow-menu: 0 2px 4px rgb(16 38 63 / 0.05), 0 24px 48px -24px rgb(16 38 63 / 0.28);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --breakpoint-xs: 25rem;
+}
+
+/* Container width is a token, not a magic number. */
+@utility container-page {
+  width: 100%;
+  max-width: 82.5rem; /* 1320px */
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 48rem) { padding-inline: 2rem; }
+  @media (width >= 80rem) { padding-inline: 2.5rem; }
+}
+
+@utility container-text {
+  max-width: 46rem;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ============================================================================================
+   Base
+   ============================================================================================ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.7;
+    font-feature-settings: 'kern', 'liga', 'calt';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-ink);
+    font-weight: 650;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  [lang='hi'] {
+    font-family: var(--font-deva);
+    letter-spacing: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection { background: var(--color-teal-100); color: var(--color-ink); }
+
+  img { max-width: 100%; height: auto; }
+
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ============================================================================================
+   Editorial details
+   ============================================================================================ */
+
+/* Section index label: "01 — About the Commission" */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal-700);
+}
+.eyebrow .index {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-saffron-700);
+}
+.eyebrow .rule {
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+.on-dark .eyebrow { color: #9fd3cf; }
+.on-dark .eyebrow .index { color: #e3b47a; }
+
+/* The tricolour reference: a 3px hairline, never a block of colour. */
+.tricolour {
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-saffron) 0 33.33%, #ffffff 33.33% 66.66%, var(--color-green) 66.66% 100%);
+}
+
+/* Underline treatment for inline text links */
+.link-underline {
+  color: var(--color-teal-700);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--color-teal-700) 40%, transparent);
+  transition: text-decoration-color 0.18s, color 0.18s;
+}
+.link-underline:hover { text-decoration-color: currentColor; color: var(--color-teal-800); }
+
+.file-badge {
+  display: inline-block;
+  margin-left: 0.45em;
+  padding: 0.05em 0.4em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-size: 0.66em;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  vertical-align: 0.15em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ============================================================================================
+   Textures — subtle, decorative only (all rendered aria-hidden)
+   ============================================================================================ */
+
+.texture-grid {
+  background-image:
+    linear-gradient(to right, rgb(16 38 63 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(16 38 63 / 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgb(16 38 63 / 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(16 38 63 / 0.025) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+}
+
+.texture-grid-dark {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.texture-paper {
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.15 0 0 0 0 0.25 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.fade-mask-b { mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+.fade-mask-r { mask-image: linear-gradient(to right, #000 40%, transparent); }
+.fade-mask-radial { mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%); }
+
+/* Ambient motion — transform/opacity only; the global reduced-motion rule stops all of these. */
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(26px, -18px) rotate(8deg); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-22px, 20px) rotate(-10deg); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(18px, 14px) rotate(6deg); }
+  66% { transform: translate(-14px, -10px) rotate(-4deg); }
+}
+@keyframes orb-a { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(8%, 10%); } }
+@keyframes orb-b { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-10%, 8%); } }
+@keyframes orb-c { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(6%, -10%); } }
+@keyframes dash-flow { to { stroke-dashoffset: -320; } }
+@keyframes pan { to { background-position: 220px 110px; } }
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.55; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes scroll-cue { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(12px); opacity: 0; } }
+
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-y 9s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 80s linear infinite; }
+.animate-ping-soft { animation: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Gradient hairline border used on feature cards */
+.border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-white, #fff), var(--color-white, #fff)) padding-box,
+    linear-gradient(135deg, rgb(22 122 120 / 0.45), rgb(201 137 66 / 0.35), rgb(16 38 63 / 0.15)) border-box;
+}
+
+/* ============================================================================================
+   Official content (sanitised HTML from the IPC CMS)
+   ============================================================================================ */
+
+.ipc-prose {
+  position: relative;
+  color: var(--color-slate);
+  font-size: var(--text-body);
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.ipc-prose > * + * { margin-top: 1.1em; }
+.ipc-prose h2, .ipc-prose h3, .ipc-prose h4, .ipc-prose h5, .ipc-prose h6 {
+  color: var(--color-ink);
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+}
+.ipc-prose h2 { font-size: 1.5rem; }
+.ipc-prose h3 { font-size: 1.25rem; }
+.ipc-prose h4, .ipc-prose h5, .ipc-prose h6 { font-size: 1.0625rem; }
+.ipc-prose > :first-child { margin-top: 0; }
+.ipc-prose strong { color: var(--color-ink); font-weight: 650; }
+.ipc-prose ul, .ipc-prose ol { padding-left: 1.4em; }
+.ipc-prose ul { list-style: none; }
+.ipc-prose ul > li { position: relative; }
+.ipc-prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.05em;
+  top: 0.78em;
+  width: 0.4em;
+  height: 1px;
+  background: var(--color-teal-600);
+}
+.ipc-prose ol { list-style: decimal; }
+.ipc-prose ol > li::marker { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.ipc-prose li + li { margin-top: 0.45em; }
+.ipc-prose a {
+  color: var(--color-teal-700);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--color-teal-700) 35%, transparent);
+  transition: color 0.18s, text-decoration-color 0.18s;
+}
+.ipc-prose a:hover { color: var(--color-teal-800); text-decoration-color: currentColor; }
+.ipc-prose a:has(> img) { text-decoration: none; display: inline-block; max-width: 100%; }
+.ipc-prose img {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.ipc-prose hr { border: 0; border-top: 1px solid var(--color-line); margin: 2em 0; }
+.ipc-prose blockquote {
+  border-left: 2px solid var(--color-teal-600);
+  padding-left: 1.1em;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+}
+.ipc-prose sup { font-size: 0.7em; }
+
+.ipc-prose .table-scroll {
+  /* Positioned so absolutely positioned descendants (sr-only cues) are clipped with the table. */
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.ipc-prose .table-scroll:focus-visible { outline-offset: 2px; }
+.ipc-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.ipc-prose th, .ipc-prose td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+.ipc-prose td + td, .ipc-prose th + th { border-left: 1px solid var(--color-line); }
+.ipc-prose tr:first-child td, .ipc-prose th {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.ipc-prose tbody tr:last-child td { border-bottom: 0; }
+.ipc-prose td p { margin: 0; }
+
+/* Lists of document links read as a register */
+.ipc-prose li:has(> a[data-file]:only-child),
+.ipc-prose p:has(> a[data-file]:only-child) {
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.55em;
+}
+
+/* ============================================================================================
+   High contrast mode (GIGW) — toggled from the utility bar
+   ============================================================================================ */
+
+:root[data-contrast='high'] {
+  --color-paper: #ffffff;
+  --color-paper-2: #ffffff;
+  --color-slate: #000000;
+  --color-muted: #1a1a1a;
+  --color-ink: #000000;
+  --color-line: #000000;
+  --color-line-strong: #000000;
+  --color-teal-600: #003d7a;
+  --color-teal-700: #003d7a;
+  --color-teal-800: #002a55;
+  --color-teal-50: #ffffff;
+  --color-teal-100: #ffff66;
+  --color-navy-900: #000000;
+  --color-navy-950: #000000;
+  --color-navy-800: #000000;
+  --color-saffron-700: #000000;
+}
+:root[data-contrast='high'] .texture-grid,
+:root[data-contrast='high'] .texture-paper,
+:root[data-contrast='high'] .decor { background-image: none !important; display: none; }
+:root[data-contrast='high'] a { text-decoration: underline !important; }
+:root[data-contrast='high'] :focus-visible { outline: 3px solid #000; outline-offset: 3px; box-shadow: 0 0 0 6px #ffff00; }
+
+/* ============================================================================================
+   Motion and print
+   ============================================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print, header[role='banner'], footer[role='contentinfo'], nav { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .ipc-prose a::after { content: ' (' attr(href) ')'; font-size: 0.8em; color: #444; word-break: break-all; }
+  .ipc-prose a[data-internal]::after { content: ''; }
+  .texture-grid, .texture-paper { background: none !important; }
+}
