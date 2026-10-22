@@ -1,4 +1,5 @@
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { SmartLink } from '../components/ui/SmartLink';
 import { navigation } from '../lib/nav';
 import { usePageSetup } from '../lib/page-context';
@@ -27,33 +28,35 @@ export function SiteMapTemplate({ page }: { page: SimplePage }) {
   return (
     <>
       <PageHeader title="Site Map" eyebrow="Help" lead="Every section of the Indian Pharmacopoeia Commission website." />
+      <PageCanvas>
       <div className="container-page py-12 md:py-16">
-        <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {navigation.main.map(group => (
-            <section key={group.label} aria-labelledby={`sm-${group.label}`}>
-              <h2 id={`sm-${group.label}`} className="border-b border-line-strong pb-3 text-h3">
+            <section key={group.label} aria-labelledby={`sm-${group.label}`} className="page-sheet">
+              <h2 id={`sm-${group.label}`} className="pb-1 text-h3">
                 {group.to ? <SmartLink to={group.to} className="hover:text-teal-700">{group.label}</SmartLink> : group.label}
               </h2>
               <div className="mt-5 space-y-6">
                 {group.columns ? group.columns.map(col => (
                   <div key={col.heading}>
-                    <p className="mb-2.5 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">{col.heading}</p>
+                    <p className="mb-2.5 text-[0.9375rem] font-semibold" style={{ color: 'var(--accent-ink)' }}>{col.heading}</p>
                     <Tree nodes={col.items} />
                   </div>
                 )) : <Tree nodes={[group]} />}
               </div>
             </section>
           ))}
-          <section aria-labelledby="sm-help">
-            <h2 id="sm-help" className="border-b border-line-strong pb-3 text-h3">Help & Policies</h2>
+          <section aria-labelledby="sm-help" className="page-sheet">
+            <h2 id="sm-help" className="pb-1 text-h3">Help & Policies</h2>
             <div className="mt-5"><Tree nodes={navigation.footer} /></div>
           </section>
-          <section aria-labelledby="sm-library">
-            <h2 id="sm-library" className="border-b border-line-strong pb-3 text-h3">Library & Information Centre</h2>
+          <section aria-labelledby="sm-library" className="page-sheet">
+            <h2 id="sm-library" className="pb-1 text-h3">Library & Information Centre</h2>
             <div className="mt-5"><Tree nodes={navigation.library} /></div>
           </section>
         </div>
       </div>
+      </PageCanvas>
     </>
   );
 }

@@ -6,6 +6,7 @@ import '@fontsource/noto-sans-devanagari/devanagari-400.css';
 import '@fontsource/noto-sans-devanagari/devanagari-500.css';
 import '@fontsource/noto-sans-devanagari/devanagari-600.css';
 import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
 import './styles/index.css';
 import { App } from './App';
 

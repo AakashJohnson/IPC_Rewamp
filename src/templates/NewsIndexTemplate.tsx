@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router';
 import { motion } from 'motion/react';
 import { ArrowRight, Search, X } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { NewsRow } from '../components/ui/NewsRow';
 import { Pagination } from '../components/ui/Pagination';
 import { EmptyState } from '../components/ui/EmptyState';
@@ -69,7 +70,7 @@ function NewsList({ archive }: { archive: boolean }) {
 
   return (
     <div className="grid gap-10 lg:grid-cols-12">
-      <aside className="lg:col-span-3">
+      <aside className="side-card self-start lg:col-span-3">
         {/* Phones: search + year side by side, topics as a scrolling chip row. Desktop: a sticky sidebar. */}
         <div className="grid grid-cols-[1fr_8.5rem] gap-x-3 gap-y-5 lg:sticky lg:top-24 lg:block lg:space-y-7">
           <div className="relative">
@@ -80,7 +81,7 @@ function NewsList({ archive }: { archive: boolean }) {
               type="search"
               defaultValue={q}
               onChange={e => update({ q: e.target.value })}
-              className="mt-1.5 h-11 w-full rounded-sm border border-line-strong bg-white pl-10 pr-3 text-ink focus:border-teal-600 focus:outline-none"
+              className="mt-1.5 h-11 w-full rounded-full border border-line-strong bg-white pl-10 pr-3 text-ink focus:border-teal-600 focus:outline-none"
             />
           </div>
           <fieldset className="order-3 col-span-2 min-w-0">
@@ -93,7 +94,7 @@ function NewsList({ archive }: { archive: boolean }) {
                     type="button"
                     aria-pressed={topic === value}
                     onClick={() => update({ topic: value })}
-                    className={`flex h-9 items-center gap-2 whitespace-nowrap rounded-sm border px-3 text-[0.875rem] transition-colors lg:h-auto lg:w-full lg:justify-between lg:gap-3 lg:whitespace-normal lg:rounded-xs lg:border-0 lg:border-l-2 lg:py-2 lg:text-left lg:text-[0.9375rem] ${topic === value ? 'border-navy-900 bg-navy-900 font-semibold text-white lg:border-teal-600 lg:bg-white lg:text-ink' : 'border-line-strong bg-white text-slate hover:text-ink lg:border-transparent lg:bg-transparent lg:text-muted lg:hover:bg-white/70'}`}
+                    className={`flex h-9 items-center gap-2 whitespace-nowrap rounded-sm border px-3 text-[0.875rem] transition-colors lg:h-auto lg:w-full lg:justify-between lg:gap-3 lg:whitespace-normal lg:rounded-full lg:border-0 lg:px-4 lg:py-2 lg:text-left lg:text-[0.9375rem] ${topic === value ? 'border-navy-900 bg-navy-900 font-semibold text-white' : 'chip-glass border-transparent text-slate hover:text-ink'}`}
                   >
                     <span>{label}</span>
                     <span className="tabular text-meta">{count}</span>
@@ -108,7 +109,7 @@ function NewsList({ archive }: { archive: boolean }) {
               id={yearId}
               value={year}
               onChange={e => update({ year: e.target.value })}
-              className="mt-1.5 block h-11 w-full rounded-sm border border-line-strong bg-white px-3 text-ink focus:border-teal-600 focus:outline-none"
+              className="mt-1.5 block h-11 w-full rounded-full border border-line-strong bg-white px-4 text-ink focus:border-teal-600 focus:outline-none"
             >
               <option value="">All years</option>
               {years.map(y => <option key={y} value={y}>{y}</option>)}
@@ -121,7 +122,7 @@ function NewsList({ archive }: { archive: boolean }) {
         </div>
       </aside>
 
-      <div className="min-w-0 lg:col-span-9" ref={listTop}>
+      <div className="page-sheet min-w-0 lg:col-span-9" ref={listTop}>
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line-strong pb-3">
           <p className="text-meta text-muted" aria-live="polite">
             <span className="tabular font-semibold text-ink">{filtered.length}</span> {filtered.length === 1 ? 'item' : 'items'}
@@ -161,11 +162,13 @@ export function NewsIndexTemplate({ page }: { page: SimplePage }) {
         lead={archive ? 'Earlier announcements, notices and highlights from the Indian Pharmacopoeia Commission.' : 'Announcements, notices, recruitment, training and events from the Indian Pharmacopoeia Commission.'}
         printable={false}
       />
+      <PageCanvas>
       <div className="container-page py-12 md:py-16">
         <Suspense fallback={<p className="text-muted" aria-busy="true">Loading news…</p>}>
           <NewsList archive={archive} />
         </Suspense>
       </div>
+      </PageCanvas>
     </>
   );
 }

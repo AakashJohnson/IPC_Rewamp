@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { SearchForm } from '../components/layout/SearchForm';
 import { SmartLink } from '../components/ui/SmartLink';
 import { EmptyState } from '../components/ui/EmptyState';
@@ -97,7 +98,7 @@ function Results({ q }: { q: string }) {
             type="button"
             aria-pressed={filter === f.id}
             onClick={() => { setFilter(f.id); setLimit(30); }}
-            className={`inline-flex h-10 items-center gap-2 rounded-sm border px-3.5 text-[0.875rem] font-semibold transition-colors ${filter === f.id ? 'border-navy-900 bg-navy-900 text-white' : 'border-line-strong bg-white text-ink hover:border-navy-900'}`}
+            className={`inline-flex h-10 items-center gap-2 rounded-full border px-4 text-[0.875rem] font-semibold transition-colors ${filter === f.id ? 'border-navy-900 bg-navy-900 text-white' : 'chip-glass border-transparent text-ink'}`}
           >
             {f.label} <span className="tabular opacity-70">{counts[f.id] ?? 0}</span>
           </button>
@@ -127,7 +128,7 @@ function Results({ q }: { q: string }) {
             ))}
           </motion.ul>
           {shown.length > limit && (
-            <button type="button" onClick={() => setLimit(l => l + 30)} className="mt-8 inline-flex min-h-11 items-center rounded-sm border border-line-strong bg-white px-5 font-semibold text-navy-900 hover:border-navy-900">
+            <button type="button" onClick={() => setLimit(l => l + 30)} className="mt-8 inline-flex min-h-11 items-center rounded-full border border-line-strong bg-white px-5 font-semibold text-navy-900 hover:border-navy-900">
               Show more results
             </button>
           )}
@@ -148,6 +149,7 @@ export function SearchPage() {
   return (
     <>
       <PageHeader title="Search" eyebrow="Find information" printable={false} />
+      <PageCanvas>
       <div className="container-page py-12 md:py-16">
         <div className="max-w-3xl">
           <SearchForm key={q} size="lg" />
@@ -158,6 +160,7 @@ export function SearchPage() {
           </Suspense>
         </div>
       </div>
+      </PageCanvas>
     </>
   );
 }

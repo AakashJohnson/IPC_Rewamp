@@ -6,7 +6,9 @@ import { navigation } from '../../lib/nav';
 import { ease } from '../../lib/motion';
 import { SmartLink } from '../ui/SmartLink';
 import { SearchForm } from './SearchForm';
+import { AnuvadiniAttribution } from './AnuvadiniAttribution';
 import type { NavNode } from '../../lib/types';
+import { institution } from '../../config/site';
 
 function Disclosure({ label, children, level }: { label: string; children: ReactNode; level: 0 | 1 }) {
   const [open, setOpen] = useState(false);
@@ -18,7 +20,7 @@ function Disclosure({ label, children, level }: { label: string; children: React
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen(o => !o)}
-        className={`flex w-full items-center justify-between gap-3 text-left ${level === 0 ? 'py-4 text-[1.0625rem] font-semibold text-ink' : 'py-2.5 text-[0.9375rem] font-medium text-slate'}`}
+        className={`flex w-full items-center justify-between gap-3 text-left ${level === 0 ? 'py-4 font-display text-[1.75rem] font-semibold text-ink' : 'py-2.5 text-[0.9375rem] font-medium text-ink'}`}
       >
         {label}
         <ChevronDown aria-hidden size={level === 0 ? 20 : 17} className={`shrink-0 text-muted transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
@@ -43,7 +45,7 @@ function Disclosure({ label, children, level }: { label: string; children: React
 
 function NodeList({ nodes }: { nodes: NavNode[] }) {
   return (
-    <ul className="space-y-0.5 border-l border-line pl-4">
+    <ul className="space-y-0.5 border-l-2 border-navy-900/15 pl-4">
       {nodes.map(n => (
         <li key={`${n.label}-${n.to ?? n.href}`}>
           {n.children?.length ? (
@@ -58,7 +60,7 @@ function NodeList({ nodes }: { nodes: NavNode[] }) {
               </div>
             </Disclosure>
           ) : (
-            <SmartLink to={n.to} href={n.href} file={n.file} badge className="block py-2.5 text-[0.9375rem] text-slate hover:text-teal-700">
+            <SmartLink to={n.to} href={n.href} file={n.file} badge className="block py-2.5 text-[0.9375rem] text-ink hover:underline">
               {n.label}
             </SmartLink>
           )}
@@ -106,7 +108,7 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[70] lg:hidden" onKeyDown={onKeyDown}>
+        <div className="fixed inset-0 z-[70] xl:hidden" onKeyDown={onKeyDown}>
           <motion.div
             className="absolute inset-0 bg-navy-950/45"
             initial={{ opacity: 0 }}
@@ -122,32 +124,35 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.32, ease: ease.out }}
-            className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-menu"
+            initial={{ clipPath: 'circle(0% at calc(100% - 3rem) 2.2rem)' }}
+            animate={{ clipPath: 'circle(150% at calc(100% - 3rem) 2.2rem)' }}
+            exit={{ clipPath: 'circle(0% at calc(100% - 3rem) 2.2rem)' }}
+            transition={{ duration: 0.55, ease: ease.inOut }}
+            className="field field-sky grain absolute inset-y-0 right-0 flex w-full max-w-lg flex-col shadow-menu"
           >
-            <div className="flex items-center justify-between border-b border-line px-4 py-3">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Menu</p>
+            <div className="flex items-center justify-between px-5 py-3">
+              <p className="text-[0.8125rem] font-semibold leading-snug">
+                <span lang="hi" className="block">{institution.ministryHi}, {institution.governmentHi}</span>
+                <span className="block">{institution.ministryEn}, {institution.governmentEn}</span>
+              </p>
               <button
                 type="button"
                 data-autofocus
                 onClick={onClose}
-                className="inline-flex h-11 items-center gap-2 rounded-sm border border-line-strong px-3 text-[0.875rem] font-semibold text-navy-900"
+                className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-navy-900 px-4 text-[0.875rem] font-semibold text-white"
               >
                 <X aria-hidden size={18} /> Close
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto overscroll-contain px-4 pb-10">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-5 pb-10">
               <SearchForm className="mt-4" onSubmitted={onClose} />
               <nav aria-label="Primary" className="mt-4">
-                <ul className="divide-y divide-line">
+                <ul className="divide-y divide-navy-900/10">
                   <li>
-                    <SmartLink to="/" className="block py-4 text-[1.0625rem] font-semibold text-ink">Home</SmartLink>
+                    <SmartLink to="/" className="block py-4 font-display text-[1.75rem] font-semibold text-ink">Home</SmartLink>
                   </li>
-                  {navigation.main.map(item => (
-                    <li key={item.label}>
+                  {navigation.main.map((item, i) => (
+                    <motion.li key={item.label} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.18 + i * 0.05, duration: 0.4, ease: ease.out } }}>
                       {item.columns ? (
                         <Disclosure label={item.label} level={0}>
                           <div className="space-y-5 pb-5">
@@ -156,19 +161,20 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
                             )}
                             {item.columns.map(col => (
                               <div key={col.heading}>
-                                <p className="mb-1 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">{col.heading}</p>
+                                <p className="mb-1 text-[0.9375rem] font-semibold text-ink">{col.heading}</p>
                                 <NodeList nodes={col.items} />
                               </div>
                             ))}
                           </div>
                         </Disclosure>
                       ) : (
-                        <SmartLink to={item.to} href={item.href} className="block py-4 text-[1.0625rem] font-semibold text-ink">{item.label}</SmartLink>
+                        <SmartLink to={item.to} href={item.href} className="block py-4 font-display text-[1.75rem] font-semibold text-ink">{item.label}</SmartLink>
                       )}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </nav>
+              <AnuvadiniAttribution size="md" className="mt-8" />
             </div>
           </motion.div>
         </div>

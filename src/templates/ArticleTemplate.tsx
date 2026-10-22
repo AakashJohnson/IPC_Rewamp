@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { RichContent } from '../components/ui/RichContent';
 import { SideNav } from '../components/ui/SideNav';
 import { EmptyState } from '../components/ui/EmptyState';
@@ -14,28 +15,28 @@ import type { BodyPage } from '../lib/types';
 
 function ContactCard() {
   return (
-    <div className="mb-10 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-3">
-      <div className="bg-white p-6">
+    <div className="mb-10 grid gap-3 md:grid-cols-3">
+      <div className="tilt relative overflow-hidden rounded-[var(--radius-xl)] bg-teal-50 p-6"><span aria-hidden className="glare" />
         <MapPin aria-hidden size={20} className="text-teal-700" />
-        <h2 className="mt-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Address</h2>
+        <h2 className="mt-3 text-[1rem] font-semibold text-ink">Address</h2>
         <address className="mt-2 not-italic leading-relaxed text-ink">
           {contact.office},<br />
           {contact.address.map(l => <span key={l} className="block">{l}</span>)}
         </address>
         <SmartLink to={contact.routeMap} className="link-underline mt-3 inline-block text-[0.9375rem]">Route map of IPC</SmartLink>
       </div>
-      <div className="bg-white p-6">
+      <div className="tilt relative overflow-hidden rounded-[var(--radius-xl)] bg-teal-50 p-6"><span aria-hidden className="glare" />
         <Phone aria-hidden size={20} className="text-teal-700" />
-        <h2 className="mt-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Telephone</h2>
+        <h2 className="mt-3 text-[1rem] font-semibold text-ink">Telephone</h2>
         <ul className="mt-2 space-y-1">
           {contact.phones.map(p => (
             <li key={p}><a href={`tel:${p.replace(/-/g, '')}`} className="tabular text-ink hover:text-teal-700">{p}</a></li>
           ))}
         </ul>
       </div>
-      <div className="bg-white p-6">
+      <div className="tilt relative overflow-hidden rounded-[var(--radius-xl)] bg-teal-50 p-6"><span aria-hidden className="glare" />
         <Mail aria-hidden size={20} className="text-teal-700" />
-        <h2 className="mt-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">E-mail</h2>
+        <h2 className="mt-3 text-[1rem] font-semibold text-ink">E-mail</h2>
         <ul className="mt-2 space-y-3">
           {contact.emails.map(e => (
             <li key={e.email}>
@@ -64,12 +65,13 @@ export function ArticleTemplate({ page }: { page: BodyPage }) {
   return (
     <>
       <PageHeader title={page.title} crumbs={page.crumbs} eyebrow={eyebrow} meta={<UpdatedMeta updated={page.updated} />} />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-12 md:py-16 lg:grid-cols-12 lg:gap-10">
         <motion.article
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease: ease.out }}
-          className={side ? 'min-w-0 lg:order-2 lg:col-span-8 lg:col-start-5 xl:col-span-8' : 'min-w-0 lg:col-span-9'}
+          className={`page-sheet ${side ? 'min-w-0 lg:order-2 lg:col-span-8 lg:col-start-5 xl:col-span-8' : 'min-w-0 lg:col-span-10 lg:col-start-2'}`}
         >
           {page.kind === 'contact' && <ContactCard />}
           {page.bodyHtml ? (
@@ -87,11 +89,12 @@ export function ArticleTemplate({ page }: { page: BodyPage }) {
           <SourceNote official={page.official} updated={page.updated} />
         </motion.article>
         {side && (
-          <aside className="lg:order-1 lg:col-span-3">
+          <aside className="side-card self-start lg:sticky lg:top-32 lg:order-1 lg:col-span-3">
             <SideNav model={side} />
           </aside>
         )}
       </div>
+      </PageCanvas>
     </>
   );
 }

@@ -35,3 +35,9 @@ export const inView = {
   whileInView: 'visible',
   viewport: { once: true, margin: '0px 0px -12% 0px' },
 } as const;
+
+/** Grid entrance with a small overshoot (UI UX Pro Max "Stagger List — Standard": scale 0.92, back-out). */
+export const pop: Variants = {
+  hidden: { opacity: 0, y: 16, scale: 0.92 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 260, damping: 22 } },
+};

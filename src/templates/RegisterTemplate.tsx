@@ -2,6 +2,7 @@ import { useId, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { DocumentRow } from '../components/ui/DocumentRow';
 import { EmptyState } from '../components/ui/EmptyState';
 import { SmartLink } from '../components/ui/SmartLink';
@@ -44,8 +45,9 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
   return (
     <>
       <PageHeader title={title} crumbs={page.crumbs.length > 1 ? page.crumbs : []} eyebrow={groupOf(page.route)?.label ?? 'Notices'} meta={<UpdatedMeta updated={page.updated} />} />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-12 md:py-16 lg:grid-cols-12 lg:gap-10">
-        <div className={side ? 'min-w-0 lg:order-2 lg:col-span-9' : 'min-w-0 lg:col-span-12'}>
+        <div className={`page-sheet ${side ? 'min-w-0 lg:order-2 lg:col-span-9' : 'min-w-0 lg:col-span-12'}`}>
           {page.rows.length > 0 ? (
             <>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -57,7 +59,7 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
                     type="search"
                     value={q}
                     onChange={e => setQ(e.target.value)}
-                    className="mt-1.5 h-11 w-full rounded-sm border border-line-strong bg-white pl-10 pr-3 text-ink focus:border-teal-600 focus:outline-none"
+                    className="mt-1.5 h-11 w-full rounded-full border border-line-strong bg-white pl-10 pr-3 text-ink focus:border-teal-600 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -66,7 +68,7 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
                     id={sortId}
                     value={sort}
                     onChange={e => setSort(e.target.value as Sort)}
-                    className="mt-1.5 block h-11 rounded-sm border border-line-strong bg-white px-3 text-ink focus:border-teal-600 focus:outline-none"
+                    className="mt-1.5 block h-11 rounded-full border border-line-strong bg-white px-4 text-ink focus:border-teal-600 focus:outline-none"
                   >
                     <option value="newest">Newest first</option>
                     <option value="oldest">Oldest first</option>
@@ -78,7 +80,7 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
                 Showing <span className="tabular font-semibold text-ink">{rows.length}</span> of <span className="tabular">{page.rows.length}</span> documents
               </p>
               {rows.length > 0 ? (
-                <motion.ul key={`${q}-${sort}`} variants={stagger(0.03)} initial="hidden" animate="visible" className="mt-3 overflow-hidden rounded-sm border border-line bg-white">
+                <motion.ul key={`${q}-${sort}`} variants={stagger(0.03)} initial="hidden" animate="visible" className="mt-4 grid gap-3 md:grid-cols-2">
                   {rows.map((r, i) => <DocumentRow key={`${r.href}-${i}`} row={r} showExpiry={page.hasExpiry} />)}
                 </motion.ul>
               ) : (
@@ -102,7 +104,7 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
             <ul className="mt-8 flex flex-wrap gap-3">
               {page.links.map(l => (
                 <li key={l.label}>
-                  <SmartLink to={l.to} href={l.href} className="group inline-flex items-center gap-2 rounded-sm border border-line-strong bg-white px-4 py-2.5 text-[0.9375rem] font-semibold text-navy-900 hover:border-navy-900">
+                  <SmartLink to={l.to} href={l.href} className="chip-glass group inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[0.9375rem] font-semibold text-navy-900 hover:border-navy-900">
                     {l.label} <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-1" />
                   </SmartLink>
                 </li>
@@ -111,8 +113,9 @@ export function RegisterTemplate({ page }: { page: RegisterPage }) {
           )}
           <SourceNote official={page.official} updated={page.updated} />
         </div>
-        {side && <aside className="lg:order-1 lg:col-span-3"><SideNav model={side} /></aside>}
+        {side && <aside className="side-card self-start lg:sticky lg:top-32 lg:order-1 lg:col-span-3"><SideNav model={side} /></aside>}
       </div>
+      </PageCanvas>
     </>
   );
 }

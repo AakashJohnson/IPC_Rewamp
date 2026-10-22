@@ -3,13 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#10263F" />
+    <meta name="theme-color" content="#fbfcfd" />
     <meta name="description" content="Indian Pharmacopoeia Commission (IPC), an autonomous institution of the Ministry of Health & Family Welfare, Government of India, sets the standards of drugs in the country." />
     <link rel="icon" type="image/png" href="/images/official/ipc-emblem-32.png" />
     <title>Indian Pharmacopoeia Commission</title>
+    <style>
+      /* Boot loader: first visit only, removed by the app once the first screen is ready (src/lib/boot.ts). */
+      #boot {
+        position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+        background: radial-gradient(40rem 26rem at 30% 20%, rgb(58 165 234 / 0.12), transparent 60%),
+                    radial-gradient(36rem 24rem at 75% 80%, rgb(243 154 43 / 0.10), transparent 60%), #fbfcfd;
+        color: #0b2240; font: 500 0.9375rem/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+        transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.5s;
+      }
+      #boot.is-done { opacity: 0; visibility: hidden; }
+      #boot .b-inner { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; padding: 1.5rem; text-align: center; max-width: 26rem; }
+      #boot svg { width: 7.5rem; height: 7.5rem; overflow: visible; }
+      #boot .ring { transform-origin: 60px 60px; animation: b-spin 3.6s linear infinite; }
+      #boot .ring.r2 { animation-duration: 5.4s; animation-direction: reverse; }
+      #boot .hex { stroke-dasharray: 160; stroke-dashoffset: 160; animation: b-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.1s forwards; }
+      #boot .core { transform-origin: 60px 60px; animation: b-pulse 2.4s ease-in-out infinite; }
+      #boot .b-msg { color: #4d5b6e; }
+      #boot .b-actions { display: none; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+      #boot.is-stuck .b-actions { display: flex; }
+      #boot .b-actions a, #boot .b-actions button {
+        min-height: 44px; padding: 0.6rem 1.1rem; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer;
+        border: 1px solid #c3cfdc; background: #fff; color: #0b2240; text-decoration: none; display: inline-flex; align-items: center;
+      }
+      #boot .b-actions button { background: #0b2240; border-color: #0b2240; color: #fff; }
+      #boot :focus-visible { outline: 3px solid #0b2240; outline-offset: 3px; }
+      @keyframes b-spin { to { transform: rotate(360deg); } }
+      @keyframes b-draw { to { stroke-dashoffset: 0; } }
+      @keyframes b-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+      @media (prefers-reduced-motion: reduce) {
+        #boot .ring, #boot .core { animation: none; }
+        #boot .hex { animation: none; stroke-dashoffset: 0; }
+        #boot { transition: none; }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot" role="status" aria-live="polite">
+      <div class="b-inner">
+        <svg viewBox="0 0 120 120" aria-hidden="true" fill="none">
+          <g class="ring">
+            <ellipse cx="60" cy="60" rx="54" ry="20" stroke="#0a8a82" stroke-opacity="0.35" stroke-width="1.2" />
+            <circle cx="114" cy="60" r="4" fill="#0a8a82" />
+          </g>
+          <g class="ring r2">
+            <ellipse cx="60" cy="60" rx="54" ry="20" stroke="#3aa5ea" stroke-opacity="0.35" stroke-width="1.2" transform="rotate(60 60 60)" />
+            <circle cx="60" cy="60" r="3.5" fill="#f39a2b" transform="rotate(60 60 60) translate(-54 0)" />
+          </g>
+          <path class="hex" d="M60 38 79 49v22L60 82 41 71V49Z" stroke="#0b2240" stroke-width="2" stroke-linejoin="round" />
+          <circle class="core" cx="60" cy="60" r="5" fill="#0b2240" />
+        </svg>
+        <p class="b-msg"><span id="boot-text">Loading the Indian Pharmacopoeia Commission website…</span></p>
+        <div class="b-actions">
+          <button type="button" onclick="location.reload()">Try again</button>
+          <a href="https://www.ipc.gov.in/" rel="noopener">Open www.ipc.gov.in</a>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
+    <script>
+      (function () {
+        var boot = document.getElementById('boot');
+        var text = document.getElementById('boot-text');
+        var settled = false;
+        var failed = false;
+        function remove() { if (boot && boot.parentNode) boot.parentNode.removeChild(boot); }
+        function done() {
+          if (settled) return;
+          settled = true;
+          boot.classList.add('is-done');
+          boot.setAttribute('aria-hidden', 'true');
+          setTimeout(remove, 600);
+        }
+        function stuck(message, isFailure) {
+          if (settled || failed) return;
+          failed = !!isFailure;
+          // If the app did render, never hold it back: just leave.
+          if (document.getElementById('root').childElementCount > 0) return done();
+          boot.classList.add('is-stuck');
+          text.textContent = message;
+        }
+        window.__ipcBoot = { done: done };
+        // Script or stylesheet failed to load (network error, bad deploy).
+        window.addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && (t.tagName === 'SCRIPT' || t.tagName === 'LINK')) stuck('The website could not be loaded. Check your connection and try again.', true);
+        }, true);
+        // Hard cap: the loader can never block the page for longer than this.
+        setTimeout(function () { stuck('This is taking longer than usual. You can keep waiting, try again, or use the official website.'); }, 8000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

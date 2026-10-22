@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { SmartLink } from '../components/ui/SmartLink';
 import { SourceNote } from './shared';
 import { hostOf } from '../lib/links';
@@ -14,12 +15,13 @@ export function LinksTemplate({ page }: { page: LinksPage }) {
   return (
     <>
       <PageHeader title={page.title} eyebrow="More" lead="Websites of related ministries, regulators and public institutions." printable={false} />
+      <PageCanvas>
       <div className="container-page py-12 md:py-16">
         <p className="text-meta text-muted">These links open external websites in a new tab. IPC is not responsible for their content.</p>
-        <motion.ul variants={stagger(0.03)} initial="hidden" animate="visible" className="mt-5 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <motion.ul variants={stagger(0.03)} initial="hidden" animate="visible" className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {links.map(l => (
-            <motion.li key={l.href ?? l.to} variants={fadeUp} className="bg-white">
-              <SmartLink to={l.to} href={l.href} className="group flex h-full items-start justify-between gap-4 p-5 hover:bg-teal-50/60">
+            <motion.li key={l.href ?? l.to} variants={fadeUp}>
+              <SmartLink to={l.to} href={l.href} className="tex-card edge-glow tilt group relative flex h-full items-start justify-between gap-4 overflow-hidden rounded-[var(--radius-lg)] bg-white p-5 shadow-hair">
                 <span>
                   <span className="block font-semibold leading-snug text-ink group-hover:text-teal-800">{l.label}</span>
                   {l.href && <span className="mt-1 block text-meta text-muted">{hostOf(l.href)}</span>}
@@ -31,6 +33,7 @@ export function LinksTemplate({ page }: { page: LinksPage }) {
         </motion.ul>
         <SourceNote official={page.official} />
       </div>
+      </PageCanvas>
     </>
   );
 }

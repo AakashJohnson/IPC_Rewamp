@@ -2,7 +2,7 @@
   "name": "ipc-website",
   "private": true,
   "version": "1.0.0",
-  "description": "Indian Pharmacopoeia Commission — redesigned frontend (Institutional Precision)",
+  "description": "Indian Pharmacopoeia Commission — redesigned frontend (Public Science Exhibition)",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,14 +16,17 @@
     "images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource-variable/public-sans": "^5.3.0",
     "@fontsource-variable/source-serif-4": "^5.3.1",
     "@fontsource/noto-sans-devanagari": "^5.3.0",
+    "@types/three": "^0.180.0",
     "lucide-react": "^0.577.0",
     "motion": "^12.43.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-router": "^7.18.4"
+    "react-router": "^7.18.4",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

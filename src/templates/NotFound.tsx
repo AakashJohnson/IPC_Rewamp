@@ -1,4 +1,5 @@
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { SearchForm } from '../components/layout/SearchForm';
 import { SmartLink } from '../components/ui/SmartLink';
 import { usePageSetup } from '../lib/page-context';
@@ -18,6 +19,7 @@ export function NotFound() {
   return (
     <>
       <PageHeader title="Page not found" printable={false} lead="The page you requested is not available. It may have been moved, or the address may be incorrect." />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-14 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <MagnifierDoc className="mb-6 w-56" />
@@ -33,6 +35,7 @@ export function NotFound() {
           </ul>
         </div>
       </div>
+      </PageCanvas>
     </>
   );
 }

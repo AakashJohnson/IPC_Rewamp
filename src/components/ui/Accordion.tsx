@@ -15,7 +15,7 @@ interface AccordionItemProps {
 export function AccordionItem({ title, open, onToggle, children, index }: AccordionItemProps) {
   const id = useId();
   return (
-    <div className="border-b border-line">
+    <div className="tex-card mb-3 overflow-hidden rounded-[var(--radius-lg)] bg-pearl transition-[background-color,box-shadow] duration-300 hover:shadow-lift has-[[aria-expanded=true]]:bg-white has-[[aria-expanded=true]]:shadow-lift">
       <h3 className="text-[1.0625rem] font-semibold">
         <button
           type="button"
@@ -23,17 +23,17 @@ export function AccordionItem({ title, open, onToggle, children, index }: Accord
           aria-expanded={open}
           aria-controls={`${id}-panel`}
           onClick={onToggle}
-          className="group flex w-full items-start gap-4 py-5 text-left text-ink hover:text-teal-800"
+          className="group flex w-full items-start gap-4 px-5 py-5 text-left text-ink hover:text-teal-800"
         >
           {index !== undefined && (
-            <span className="tabular mt-0.5 w-7 shrink-0 text-[0.875rem] font-semibold text-muted">{String(index).padStart(2, '0')}</span>
+            <span className="tabular flex size-8 shrink-0 items-center justify-center rounded-full bg-teal-600 text-[0.875rem] font-bold text-white">{index}</span>
           )}
           <span className="flex-1 leading-snug">{title}</span>
           <motion.span
             aria-hidden
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.2, ease: ease.out }}
-            className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full border border-line text-teal-700 group-hover:border-teal-600/50"
+            className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-teal-700 shadow-hair group-hover:bg-teal-600 group-hover:text-white"
           >
             <Plus size={16} />
           </motion.span>
@@ -51,7 +51,7 @@ export function AccordionItem({ title, open, onToggle, children, index }: Accord
             transition={{ duration: 0.3, ease: ease.out }}
             className="overflow-hidden"
           >
-            <div className={`pb-6 ${index !== undefined ? 'pl-11' : ''} pr-11`}>{children}</div>
+            <div className={`px-5 pb-6 ${index !== undefined ? 'sm:pl-[4.25rem]' : ''}`}>{children}</div>
           </motion.div>
         )}
       </AnimatePresence>

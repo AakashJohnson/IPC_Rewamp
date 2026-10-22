@@ -2,6 +2,7 @@ import { useId, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { AlertCircle, CheckCircle2, Mail, Paperclip } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { SmartLink } from '../components/ui/SmartLink';
 import { FORMS } from '../config/forms';
 import { submitAdapter, type SubmissionResult } from '../lib/forms/submit-adapter';
@@ -13,7 +14,7 @@ import type { FormPage } from '../lib/types';
 type Errors = Record<string, string>;
 
 const inputCls = (invalid: boolean) =>
-  `mt-1.5 block w-full rounded-sm border bg-white px-3.5 text-ink placeholder:text-muted/70 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-teal-600 ${invalid ? 'border-[#b42318]' : 'border-line-strong focus:border-teal-600'}`;
+  `mt-1.5 block w-full rounded-[var(--radius-md)] border bg-pearl px-4 text-ink placeholder:text-muted/70 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-teal-600 ${invalid ? 'border-[#b42318]' : 'border-line-strong focus:border-teal-600'}`;
 
 const isVisible = (f: FieldDefinition, values: FormValues) =>
   !f.showWhen || f.showWhen.equals.includes(String(values[f.showWhen.field] ?? ''));
@@ -104,7 +105,7 @@ function Field({ f, values, errors, set, baseId }: {
         <FieldShell id={id} label={f.label} required={f.required} hint={f.hint} error={error} as="fieldset">
           <div id={id} tabIndex={-1} className="mt-2 flex flex-wrap gap-2" aria-describedby={describedBy}>
             {f.options?.map(o => (
-              <label key={o.value} className={`inline-flex min-h-11 cursor-pointer items-center gap-2.5 rounded-sm border px-3.5 text-[0.9375rem] transition-colors ${value === o.value ? 'border-teal-600 bg-teal-50 text-ink' : 'border-line-strong bg-white text-slate hover:border-navy-800'}`}>
+              <label key={o.value} className={`inline-flex min-h-11 cursor-pointer items-center gap-2.5 rounded-full border px-4 text-[0.9375rem] transition-colors ${value === o.value ? 'border-teal-600 bg-teal-50 text-ink' : 'border-line-strong bg-white text-slate hover:border-navy-800'}`}>
                 <input type="radio" name={f.name} value={o.value} checked={value === o.value} onChange={() => set(f.name, o.value)}
                   className="size-4 accent-teal-700" />
                 {o.label}
@@ -232,8 +233,9 @@ export function FormTemplate({ page }: { page: FormPage }) {
   return (
     <>
       <PageHeader title={form.title} crumbs={page.crumbs.filter(c => c.label !== form.title)} eyebrow="Online form" lead={form.intro} printable={false} />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-12 md:py-16 lg:grid-cols-12">
-        <div className="min-w-0 lg:col-span-8">
+        <div className="page-sheet min-w-0 lg:col-span-8">
           <AnimatePresence mode="wait">
             {result ? (
               <motion.div
@@ -289,7 +291,7 @@ export function FormTemplate({ page }: { page: FormPage }) {
                 <p className="text-meta text-muted">Fields marked <span className="text-[#b42318]">*</span> are required.</p>
                 {form.fieldsets.map((fs, i) => (
                   <fieldset key={fs.legend} className="border-t border-line pt-8">
-                    <legend className="eyebrow -mt-11 bg-paper pr-3">
+                    <legend className="eyebrow -mt-11 rounded-full bg-white px-3">
                       <span className="index">{String(i + 1).padStart(2, '0')}</span><span className="rule" aria-hidden />{fs.legend}
                     </legend>
                     <div className="mt-2 grid gap-6 sm:grid-cols-2">
@@ -302,7 +304,7 @@ export function FormTemplate({ page }: { page: FormPage }) {
                   </fieldset>
                 ))}
                 <div className="flex flex-wrap items-center gap-4 border-t border-line pt-8">
-                  <button type="submit" disabled={submitting} className="inline-flex min-h-12 items-center gap-2 rounded-sm bg-navy-900 px-6 font-semibold text-white hover:bg-navy-800 disabled:opacity-60">
+                  <button type="submit" disabled={submitting} className="search-pill inline-flex min-h-12 items-center gap-2 rounded-full px-7 font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60">
                     <Mail aria-hidden size={17} /> Prepare e-mail submission
                   </button>
                   <p className="max-w-md text-meta text-muted">
@@ -315,8 +317,8 @@ export function FormTemplate({ page }: { page: FormPage }) {
         </div>
         <aside className="lg:col-span-3 lg:col-start-10">
           <div className="space-y-6 lg:sticky lg:top-24">
-            <div className="rounded-sm border border-line bg-white p-6">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Submitted to</p>
+            <div className="side-card">
+              <p className="text-[1rem] font-semibold text-ink">Submitted to</p>
               <ul className="mt-2 space-y-1">
                 {[...form.to, ...(form.cc ?? [])].map(e => <li key={e}><a href={`mailto:${e}`} className="link-underline text-[0.875rem] [overflow-wrap:anywhere]">{e}</a></li>)}
               </ul>
@@ -325,8 +327,8 @@ export function FormTemplate({ page }: { page: FormPage }) {
               </p>
             </div>
             {form.related && (
-              <div className="rounded-sm border border-line bg-white p-6">
-                <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Before you apply</p>
+              <div className="side-card">
+                <p className="text-[1rem] font-semibold text-ink">Before you apply</p>
                 <ul className="mt-3 space-y-2 text-[0.9375rem]">
                   {form.related.map(r => <li key={r.to}><SmartLink to={r.to} className="link-underline">{r.label}</SmartLink></li>)}
                 </ul>
@@ -335,6 +337,7 @@ export function FormTemplate({ page }: { page: FormPage }) {
           </div>
         </aside>
       </div>
+      </PageCanvas>
     </>
   );
 }

@@ -1,55 +1,67 @@
-import type { ComponentType } from 'react';
+import type { CSSProperties } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { SectionHeading } from '../../components/ui/SectionHeading';
 import { SmartLink } from '../../components/ui/SmartLink';
-import { Spotlight } from '../../components/effects/Interactive';
-import { MoleculeField } from '../../components/effects/AnimatedBackdrop';
-import { BookStack, Globe, MedicalDevice, Molecule, PulseShield, ReferenceVials } from '../../components/illustrations';
-import { fadeUp, inView, stagger } from '../../lib/motion';
+import { BookStack } from '../../components/illustrations';
+import { inView, pop, stagger } from '../../lib/motion';
 import { programmes } from '../../config/site';
+import type { Accent } from '../../config/hero';
+import { SectionBackdrop } from '../../components/effects/SectionBackdrop';
 
-// One illustration per programme, in the order of `programmes` in config/site.ts.
-const ART: ComponentType<{ className?: string }>[] = [BookStack, ReferenceVials, PulseShield, MedicalDevice, Molecule, Globe];
+// Each programme is set as an "element" tile — a periodic-table motif for the Commission's mandate.
+// Order and wording follow `programmes` in config/site.ts.
+const ELEMENT: { symbol: string; accent: Accent }[] = [
+  { symbol: 'Ip', accent: 'teal' },
+  { symbol: 'Rs', accent: 'violet' },
+  { symbol: 'Pv', accent: 'coral' },
+  { symbol: 'Mv', accent: 'sky' },
+  { symbol: 'Nf', accent: 'saffron' },
+  { symbol: 'Hz', accent: 'teal' },
+];
 
 export function ScientificProgrammes() {
   return (
-    <section aria-labelledby="programmes-title" className="relative overflow-hidden bg-paper py-16 md:py-24">
-      <MoleculeField tone="text-teal-700/[0.07]" mask="edges" />
-      <div className="container-page relative">
+    <section aria-labelledby="programmes-title" className="has-backdrop field field-violet grain relative overflow-hidden py-20 md:py-28">
+      <SectionBackdrop variant="hex" />
+      <div className="container-page">
         <SectionHeading
           id="programmes-title"
-          index="05"
           eyebrow="Mandate"
           title="Programmes & scientific functions"
           intro="The work of the Commission, as set out in its objectives — from drug standards to the safety monitoring of medicines and medical devices."
         />
-        <motion.ul variants={stagger(0.08)} {...inView} className="mt-10 grid gap-5 md:mt-14 md:grid-cols-2 lg:grid-cols-3">
+        <motion.ul variants={stagger(0.07)} {...inView} className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {programmes.map((p, i) => {
-            const Art = ART[i];
+            const el = ELEMENT[i];
+            const lead = i === 0;
             return (
-              <motion.li key={p.title} variants={fadeUp}>
-                <Spotlight className="h-full overflow-hidden rounded-md border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-teal-600/40 hover:shadow-lift">
-                  <SmartLink to={p.to} className="group flex h-full flex-col">
-                    <span className="relative flex h-44 items-center justify-center overflow-hidden border-b border-line bg-gradient-to-br from-teal-50 via-white to-paper">
-                      <span aria-hidden className="decor texture-grid absolute inset-0 opacity-70" />
-                      <span
-                        aria-hidden
-                        data-index={p.index}
-                        className="absolute left-5 top-4 font-serif text-[2.25rem] font-semibold leading-none text-navy-900/15 before:content-[attr(data-index)]"
-                      />
-                      <Art className="relative h-40 w-auto transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-[1.04]" />
+              <motion.li key={p.title} variants={pop} className={`accent-${el.accent} ${lead ? 'sm:col-span-2 lg:row-span-2' : ''} ${i === programmes.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+                <SmartLink
+                  to={p.to}
+                  className="tex-card edge-glow tilt spotlight group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-xl)] bg-white/85 p-6 sm:p-7"
+                >
+                  <span aria-hidden className="glare" />
+                  <span aria-hidden className="absolute -right-10 -top-10 size-40 rounded-full opacity-25 blur-2xl transition-transform duration-700 group-hover:scale-125" style={{ background: 'var(--accent)' }} />
+                  <span className="relative flex items-start justify-between gap-4">
+                    <span
+                      aria-hidden
+                      className={`flex items-center justify-center rounded-[var(--radius-md)] bg-white font-display font-semibold shadow-hair ring-2 transition-transform duration-300 group-hover:-rotate-3 ${lead ? 'size-24 text-[2.75rem]' : 'size-16 text-[1.75rem]'}`}
+                      style={{ color: 'var(--accent-ink)', '--tw-ring-color': 'var(--accent)' } as CSSProperties}
+                    >
+                      {el.symbol}
                     </span>
-                    <span className="flex flex-1 flex-col p-6">
-                      <span className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-teal-700">{p.subtitle}</span>
-                      <span className="mt-2 block text-h3 font-semibold text-ink">{p.title}</span>
-                      <span className="mt-3 block flex-1 text-[0.9375rem] leading-relaxed text-muted">{p.text}</span>
-                      <span className="mt-5 inline-flex items-center gap-2 text-[0.875rem] font-semibold text-teal-700">
-                        Learn more <ArrowRight aria-hidden size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
-                      </span>
-                    </span>
-                  </SmartLink>
-                </Spotlight>
+                    <span className="text-right text-[0.875rem] font-semibold" style={{ color: 'var(--accent-ink)' }}>{p.subtitle}</span>
+                  </span>
+                  <span className={`relative mt-6 block font-display font-semibold leading-tight text-ink ${lead ? 'text-[2rem]' : 'text-[1.375rem]'}`}>
+                    <span className="link-sweep">{p.title}</span>
+                  </span>
+                  <span className={`relative mt-3 block leading-relaxed text-slate ${lead ? 'text-[1.0625rem]' : 'flex-1 text-[0.9375rem]'}`}>{p.text}</span>
+                  {lead && <BookStack className="relative mx-auto mt-auto hidden w-64 pt-6 lg:block" />}
+                  <span className="relative mt-5 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-ink">
+                    Learn more <ArrowRight aria-hidden size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+                  </span>
+                </SmartLink>
               </motion.li>
             );
           })}

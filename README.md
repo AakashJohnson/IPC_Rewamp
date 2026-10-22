@@ -2,7 +2,7 @@
 
 This repository contains a redesigned frontend for [www.ipc.gov.in](https://www.ipc.gov.in/), the website of the Indian Pharmacopoeia Commission (Ministry of Health & Family Welfare, Government of India).
 
-Every English page of the official site, more than 950 in all, is rebuilt here as its own route. All pages share one design system, navigation and set of page templates. The design direction, called *Institutional Precision*, aims for an authoritative, calm and accessible site with purposeful motion.
+Every English page of the official site, more than 950 in all, is rebuilt here as its own route. All pages share one design system, navigation and set of page templates. The design is a colourful light theme with a *mixed rhythm*: vivid colour-field sections (teal, saffron, sky, coral, violet, with film grain) alternate with pearl "aurora" sections. One motif runs through it: the medicine capsule, which shapes image masks, buttons, the navigation pill and the hero's giant art panel.
 
 This is a frontend-only redesign. All content comes from the official website, and nothing has been invented.
 
@@ -21,11 +21,16 @@ This is a frontend-only redesign. All content comes from the official website, a
   - Document lists you can filter and sort.
   - FAQ and online forms.
 - **Visual design:**
-  - Custom animated line illustrations.
-  - Drifting molecule backgrounds.
-  - Scroll-linked parallax.
-  - Official figures that count up as they appear.
-  - A scroll-driven "how standards are made" timeline based on IPC's official monograph development process.
+  - A homepage hero carousel with a separately composed slide for each subject: the Prime Minister (the ALRC inauguration), the Union Health Minister (his message to IPC), the Minister of State (the release of NFI 2026), Indian Pharmacopoeia 2026 and IP Reference Substances. Each slide has its own colour field, generated art in a giant capsule panel, an outlined display word on a depth layer, HTML headline and call to action. A live three.js layer of glass molecules and two-tone capsules floats behind the art and follows the pointer; it is lazy-loaded, pauses offscreen, and is skipped on small screens and for reduced motion.
+  - A card-stack "How a standard is made" story: six colour cards that stick and stack on wide screens (earlier cards recede, their title bars stay visible), with a stage rail that tracks progress. On phones and with reduced motion it is a plain vertical list.
+  - A two-tier header. A 40px animated colour strip keeps text size, high contrast, the language switcher, "Powered by Anuvadini", login and cart always visible. Below it, a 68px bar holds the emblem, wordmark, icon pill navigation (mega menus stay open while the pointer travels into them) and Ctrl/⌘ K search with live results. The header hides on scroll down and returns on scroll up, but never while a menu is open or the pointer is over it. There is also a full-screen mobile menu and a compact colour-field footer with icons.
+  - The hero fits in one screen, controls included. Autoplay pauses only with the pause button, keyboard focus, a hidden tab or when scrolled away; it does not pause on hover.
+  - Every section and interior page has an animated background texture (aurora, molecule lattice, floating capsules, hexagon grid or DNA strand), paused offscreen. Interior pages put their content on a white sheet, reveal official content as you scroll, and end with an "Explore" band of related pages.
+  - Pointer layer on fine pointers only: a trailing cursor halo (the native cursor is kept), section spotlights, 3D tilt with moving glare on cards, magnetic buttons, image zoom with a colour wash.
+  - Gentle pointer depth, magnetic primary buttons and animated underlines on fine-pointer devices only.
+  - An animated molecular loader on the first visit only, which waits for real readiness (fonts and the first hero image) and has a failure screen.
+  - Display type in Bricolage Grotesque; body text in Public Sans.
+  - Each area of the site has its own accent colour family, also used on interior page headers.
 - **Accessibility (aiming at WCAG 2.2 AA and GIGW 3.0):**
   - A skip link.
   - Text-size controls.
@@ -131,8 +136,37 @@ Submissions go through `src/lib/forms/submit-adapter.ts`. By default it opens a 
 
 - Content is a dated snapshot of the official site; the date is shown in the footer. Run `npm run content:sync` to refresh it.
 - Hindi pages are served by the official `/hi/` site.
+- **Anuvadini translation:** the language switcher and adapter are built (`src/lib/translate.ts`, `src/components/layout/LanguageSwitcher.tsx`) but **not connected**. To connect, set `VITE_ANUVADINI_API_URL` to a server-side proxy that accepts `POST { source, target, texts[] }` and returns `{ translations[] }`; keep any API key in that proxy, never in the browser. Until then, choosing a language shows a "not connected" notice, and हिन्दी opens the official Hindi pages.
+- Canva's image-generation quota is exhausted (checked again on 23 October 2026), so these slots have no generated picture yet: story stages 3 and 5, news, overview, training, contact, programme tiles and interior headers. They currently use official photographs, typographic panels or the live 3D layer.
+- Canva's image-generation quota ran out after eight images. Story stages 3 and 5 therefore use a typographic panel over a live 3D scene, and sections without a generated picture use official photographs or the 3D layer.
+- The leader banners are generated likenesses made from the official portraits. They are always captioned "Digital illustration" on the site; the gallery shows only official photographs.
+- The Union Health Minister's portrait comes from a low-resolution official slide, so it is displayed at 560px wide at most.
 - The shop, cart and login stay on the official IPC online store, because they handle transactions.
 - PDFs and gallery photos load from `www.ipc.gov.in`.
+
+## Asset provenance
+
+| Asset | Source |
+|---|---|
+| Leader banners: Shri Narendra Modi, Shri Jagat Prakash Nadda, Smt. Anupriya Patel | **Generated** with Canva's AI image generator, using the official portraits from the IPC homepage carousel as likeness references. Captioned "Digital illustration" on the site. Titles come from the official carousel slides. |
+| IP 2026 release photograph | The photograph area of the official "IP 2026 Launch" carousel slide, without its text banner |
+| IP 2026 volumes, headquarters, NFI, IPRS and training photographs | Official IPC images (see `assets/official`) |
+| IP volumes, IPRS vials, story stages 1, 2 and 4 | Generated with Canva's AI image generator. No text or logos; illustrative only; they do not show IPC premises. Sources are in `assets/gen2`. |
+| 3D molecules and capsules | Rendered live in the browser with three.js (`src/components/three/LabScene.tsx`). |
+| Anuvadini logo | Supplied file from anuvadini.aicte.gov.in, served locally. Only its uniform white margin is trimmed. |
+
+Hero and story text is quoted or paraphrased from the official pages noted in `src/config/hero.ts` and `src/sections/home/StandardsStory.tsx`. The only quotation is taken word for word from the Minister's published message.
+
+## Design workflow
+
+The redesign used five UI skills, installed in `~/.claude/skills`:
+- **Frontend Design** (anthropics/skills): typography and composition rules.
+- **TasteSkill**: the "one motif" direction and its blueprints (giant cropped shape, coupon contact, the mark built large), plus `inspect.mjs` before and after (`.taste-skill/`).
+- **UI UX Pro Max**: `--design-system` with variance, motion and density dials; its motion presets.
+- **Impeccable**: `context`, `PRODUCT.md`, and `detect` (clean on the final code).
+- **Bencium Controlled UX Designer**: spacing, motion timing, touch-target and accessibility rules.
+
+Where a skill's house rule conflicted with the brief (for example TasteSkill bans gradients, glows and violet), the brief won.
 
 ## Disclaimer
 

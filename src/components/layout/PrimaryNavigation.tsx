@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent, type PointerEvent as ReactPointerEvent } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen, ChevronDown, FlaskConical, Globe, Landmark, LayoutGrid, Megaphone, MonitorSmartphone, type LucideIcon } from 'lucide-react';
 import { groupOf, navigation } from '../../lib/nav';
 import { ease, spring } from '../../lib/motion';
 import { SmartLink } from '../ui/SmartLink';
@@ -11,7 +11,19 @@ import { iconFor } from '../../lib/icons';
 import type { NavNode } from '../../lib/types';
 
 const HOVER_OPEN_MS = 110;
-const HOVER_CLOSE_MS = 180;
+const HOVER_CLOSE_MS = 450;
+
+// Icon and accent per top-level group.
+// Each group has its own colour: a gradient chip behind its icon, and the menu panel's colour field.
+const GROUP_STYLE: Record<string, { icon: LucideIcon; field: string; chip: string }> = {
+  'About IPC': { icon: Landmark, field: 'field-sky', chip: 'linear-gradient(135deg, #3aa5ea, #0a62a0)' },
+  'Publications & Standards': { icon: BookOpen, field: 'field-teal', chip: 'linear-gradient(135deg, #14b3a5, #076f69)' },
+  Programmes: { icon: FlaskConical, field: 'field-coral', chip: 'linear-gradient(135deg, #ff8a6b, #d9452c)' },
+  'Online Services': { icon: MonitorSmartphone, field: 'field-violet', chip: 'linear-gradient(135deg, #9b7cff, #5a3fcc)' },
+  Harmonization: { icon: Globe, field: 'field-teal', chip: 'linear-gradient(135deg, #2fd08a, #1f8f5f)' },
+  Notices: { icon: Megaphone, field: 'field-saffron', chip: 'linear-gradient(135deg, #ffb347, #e07b00)' },
+  More: { icon: LayoutGrid, field: 'field-violet', chip: 'linear-gradient(135deg, #f472b6, #a855f7)' },
+};
 
 function MenuLink({ node, level }: { node: NavNode; level: 0 | 1 | 2 }) {
   const Icon = level === 0 ? iconFor(node.label) : null;
@@ -25,7 +37,7 @@ function MenuLink({ node, level }: { node: NavNode; level: 0 | 1 | 2 }) {
   return (
     <SmartLink to={node.to} href={node.href} file={node.file} badge className={cls}>
       {Icon && (
-        <span aria-hidden className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-xs bg-teal-50 text-teal-700 transition-colors group-hover/link:bg-teal-600 group-hover/link:text-white">
+        <span aria-hidden className="menu-chip mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover/link:-rotate-12 group-hover/link:scale-110">
           <Icon size={14} strokeWidth={1.8} />
         </span>
       )}
@@ -48,21 +60,27 @@ function MenuTree({ nodes, level }: { nodes: NavNode[]; level: 1 | 2 }) {
   );
 }
 
-function MegaPanel({ item, id, onKeyDown }: { item: NavNode; id: string; onKeyDown: (e: KeyboardEvent) => void }) {
+function MegaPanel({ item, id, onKeyDown, onPointerEnter }: { item: NavNode; id: string; onKeyDown: (e: KeyboardEvent) => void; onPointerEnter: () => void }) {
   const columns = item.columns ?? [];
+  const style = GROUP_STYLE[item.label];
   const Art = GROUP_ILLUSTRATION[item.label];
   return (
     <motion.div
       id={id}
-      initial={{ opacity: 0, y: -6 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -4 }}
-      transition={{ duration: 0.16, ease: ease.out }}
+      initial={{ opacity: 0, y: -10, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -6 }}
+      transition={{ duration: 0.22, ease: ease.out }}
       onKeyDown={onKeyDown}
-      className="absolute inset-x-0 top-full z-50 border-b border-line bg-white shadow-menu"
+      onPointerEnter={onPointerEnter}
+      className="absolute inset-x-0 top-full z-50 pt-2"
     >
-      <div className="container-page grid max-h-[min(70vh,44rem)] grid-cols-12 gap-8 overflow-y-auto overscroll-contain py-8">
-        <div className="col-span-3 border-r border-line pr-8">
+      {/* Invisible bridge so the pointer can travel from the trigger to the panel without closing it. */}
+      <span aria-hidden className="absolute inset-x-0 -top-4 h-6" />
+      <div className="container-page">
+      <div className="grid max-h-[min(72vh,44rem)] grid-cols-12 gap-8 overflow-y-auto overscroll-contain rounded-[var(--radius-xl)] bg-white p-6 shadow-menu ring-1 ring-black/5">
+        <div className={`field ${style?.field ?? 'field-teal'} grain relative col-span-3 overflow-hidden rounded-[var(--radius-lg)] p-6`}>
+          {style && <style.icon aria-hidden size={120} strokeWidth={1} className="decor absolute -bottom-6 -right-6 opacity-15" />}
           <p className="eyebrow"><span className="rule" aria-hidden />Menu</p>
           <p className="mt-3 text-[1.375rem] font-semibold leading-tight text-ink">{item.label}</p>
           {groupDescriptions[item.label] && <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{groupDescriptions[item.label]}</p>}
@@ -74,20 +92,21 @@ function MegaPanel({ item, id, onKeyDown }: { item: NavNode; id: string; onKeyDo
           {Art && <Art className="mt-6 w-44 xl:w-52" />}
         </div>
         <div className={`col-span-9 grid gap-x-8 gap-y-8 ${columns.length >= 4 ? 'grid-cols-4' : columns.length === 3 ? 'grid-cols-3' : columns.length === 2 ? 'grid-cols-2' : 'grid-cols-2'}`}>
-          {columns.map(col => (
-            <div key={col.heading} className={columns.length === 1 ? 'col-span-2' : ''}>
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">{col.heading}</p>
+          {columns.map((col, ci) => (
+            <div key={col.heading} className={`chip-tone-${ci % 4} ${columns.length === 1 ? 'col-span-2' : ''}`}>
+              <p className="text-[0.9375rem] font-semibold text-teal-700">{col.heading}</p>
               <ul className={`mt-4 ${columns.length === 1 ? 'grid grid-cols-2 gap-x-8 gap-y-4' : 'space-y-4'}`}>
-                {col.items.map(n => (
-                  <li key={`${n.label}-${n.to ?? n.href}`}>
+                {col.items.map((n, k) => (
+                  <motion.li key={`${n.label}-${n.to ?? n.href}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.04 * k, duration: 0.3, ease: ease.out } }}>
                     <MenuLink node={n} level={0} />
                     {n.children && <MenuTree nodes={n.children} level={1} />}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
+      </div>
       </div>
     </motion.div>
   );
@@ -120,8 +139,11 @@ export function PrimaryNavigation() {
     const onDown = (e: PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) close();
     };
+    // Escape closes a menu that was opened by hover, wherever focus happens to be.
+    const onKey = (e: globalThis.KeyboardEvent) => { if (e.key === 'Escape') close(navRef.current?.contains(document.activeElement) ? open : undefined); };
     document.addEventListener('pointerdown', onDown);
-    return () => document.removeEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey); };
   }, [open, close]);
 
   useEffect(() => clearTimer, []);
@@ -174,24 +196,31 @@ export function PrimaryNavigation() {
     <nav
       ref={navRef}
       aria-label="Primary"
-      className="no-print sticky top-0 z-40 hidden border-b border-line bg-white/95 backdrop-blur-sm supports-[backdrop-filter]:bg-white/90 lg:block"
+      className="no-print hidden self-stretch xl:flex xl:items-center"
       onPointerLeave={hoverClose}
+      onPointerEnter={clearTimer}
       onBlur={e => {
         if (open && !navRef.current?.contains(e.relatedTarget as Node)) close();
       }}
     >
-      <div className="container-page">
-        <ul className="flex items-stretch gap-1" onPointerLeave={() => setHovered(null)}>
+      <div>
+        <ul className="nav-pill flex items-center gap-0.5 rounded-full p-1" onPointerLeave={() => setHovered(null)}>
           {items.map(item => {
             const isOpen = open === item.label;
             const isActive = activeGroup === item.label;
-            const base = `relative flex h-14 items-center gap-1.5 px-3 text-[0.9375rem] font-semibold transition-colors xl:px-4 ${isOpen || isActive ? 'text-navy-900' : 'text-slate hover:text-navy-900'}`;
+            const Icon = GROUP_STYLE[item.label]?.icon;
+            const base = `group/nav relative z-0 flex h-10 items-center gap-1 whitespace-nowrap rounded-full px-1 text-[0.8125rem] font-semibold transition-colors duration-200 ${isOpen || isActive ? 'text-teal-800' : 'text-ink hover:text-navy-900'}`;
+            const icon = Icon && (
+              <span aria-hidden className="hidden size-5 shrink-0 items-center justify-center rounded-full text-white min-[1360px]:flex shadow-[0_4px_10px_-4px_rgb(11_34_64/0.5)] transition-transform duration-300 group-hover/nav:-rotate-12 group-hover/nav:scale-110" style={{ background: GROUP_STYLE[item.label].chip }}>
+                <Icon size={11} strokeWidth={2.4} />
+              </span>
+            );
             const underline = indicator === item.label && (
               <motion.span
                 layoutId="primary-nav-indicator"
                 transition={spring}
                 aria-hidden
-                className={`absolute inset-x-3 bottom-0 h-[2px] xl:inset-x-4 ${isActive || isOpen ? 'bg-teal-600' : 'bg-line-strong'}`}
+                className={`absolute inset-0 -z-10 rounded-full ${isActive || isOpen ? 'nav-active' : 'nav-hover'}`}
               />
             );
             return (
@@ -206,8 +235,9 @@ export function PrimaryNavigation() {
                     onKeyDown={e => onTriggerKey(e, item)}
                     className={base}
                   >
+                    {icon}
                     {item.label}
-                    <ChevronDown aria-hidden size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown aria-hidden size={12} className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                     {underline}
                     {isActive && <span className="sr-only"> (current section)</span>}
                   </button>
@@ -218,6 +248,7 @@ export function PrimaryNavigation() {
                     onKeyDown={e => onTriggerKey(e, item)}
                     className={base}
                   >
+                    {icon}
                     {item.label}
                     {underline}
                   </NavLink>
@@ -228,7 +259,7 @@ export function PrimaryNavigation() {
         </ul>
       </div>
       <AnimatePresence>
-        {openItem && <MegaPanel key={openItem.label} item={openItem} id={`${baseId}-panel`} onKeyDown={onPanelKey} />}
+        {openItem && <MegaPanel key={openItem.label} item={openItem} id={`${baseId}-panel`} onKeyDown={onPanelKey} onPointerEnter={clearTimer} />}
       </AnimatePresence>
     </nav>
   );

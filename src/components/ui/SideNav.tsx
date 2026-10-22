@@ -12,7 +12,7 @@ function Item({ item, nested = false }: { item: LinkItem; nested?: boolean }) {
         to={item.to}
         end
         className={({ isActive }) =>
-          `${base} ${isActive ? 'border-teal-600 font-semibold text-ink' : 'border-line text-muted hover:border-line-strong hover:text-ink'}`
+          `${base} rounded-r-full ${isActive ? 'border-[color:var(--accent,var(--color-teal-600))] bg-white font-semibold text-ink shadow-hair' : 'border-line text-slate hover:border-line-strong hover:bg-white/70 hover:text-ink'}`
         }
       >
         {item.label}
@@ -30,8 +30,8 @@ function Item({ item, nested = false }: { item: LinkItem; nested?: boolean }) {
 /** Sticky section navigation for interior pages. */
 export function SideNav({ model, label = 'In this section' }: { model: SideNavModel; label?: string }) {
   return (
-    <nav aria-label={label} className="no-print lg:sticky lg:top-24">
-      <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">{label}</p>
+    <nav aria-label={label} className="no-print">
+      <p className="text-[0.875rem] font-semibold" style={{ color: 'var(--accent-ink, var(--color-teal-700))' }}>{label}</p>
       <p className="mt-2 text-[1.0625rem] font-semibold text-ink">
         {model.heading.to ? <SmartLink to={model.heading.to} className="hover:text-teal-700">{model.heading.label}</SmartLink> : model.heading.label}
       </p>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { AccordionItem } from '../components/ui/Accordion';
 import { RichContent } from '../components/ui/RichContent';
 import { SmartLink } from '../components/ui/SmartLink';
@@ -22,9 +23,10 @@ export function FaqTemplate({ page }: { page: FaqPage }) {
   return (
     <>
       <PageHeader title={page.title} eyebrow="Help" />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-12 md:py-16 lg:grid-cols-12">
-        <div className="min-w-0 lg:col-span-8">
-          <div className="flex items-center justify-between gap-4 border-b border-line-strong pb-3">
+        <div className="page-sheet min-w-0 lg:col-span-8">
+          <div className="mb-4 flex items-center justify-between gap-4">
             <p className="text-meta text-muted"><span className="tabular font-semibold text-ink">{page.items.length}</span> questions</p>
             <button
               type="button"
@@ -42,7 +44,7 @@ export function FaqTemplate({ page }: { page: FaqPage }) {
           <SourceNote official={page.official} updated={page.updated} />
         </div>
         <aside className="lg:col-span-3 lg:col-start-10">
-          <div className="rounded-sm border border-line bg-white p-6 lg:sticky lg:top-24">
+          <div className="field field-sky grain spotlight overflow-hidden rounded-[var(--radius-xl)] p-6 lg:sticky lg:top-32">
             <p className="font-semibold text-ink">Still have a question?</p>
             <p className="mt-2 text-[0.9375rem] text-muted">Write to the Commission or send your feedback.</p>
             <ul className="mt-4 space-y-2 text-[0.9375rem]">
@@ -53,6 +55,7 @@ export function FaqTemplate({ page }: { page: FaqPage }) {
           </div>
         </aside>
       </div>
+      </PageCanvas>
     </>
   );
 }

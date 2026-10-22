@@ -33,9 +33,6 @@ export const loadPage = (route: string) =>
 export const loadNews = () =>
   cached('news', async () => (await fetchJson<NewsItem[]>('/content/news.json')) ?? []);
 
-export const loadManifest = () =>
-  cached('manifest', async () => (await fetchJson<ManifestEntry[]>('/content/manifest.json')) ?? []);
-
 export interface SearchEntry extends ManifestEntry {
   /** Leading text of the page body, used for matching and result snippets */
   x: string;

@@ -2,6 +2,7 @@ import { Suspense, use } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
+import { PageCanvas } from '../components/ui/PageCanvas';
 import { RichContent } from '../components/ui/RichContent';
 import { EmptyState } from '../components/ui/EmptyState';
 import { SmartLink } from '../components/ui/SmartLink';
@@ -23,7 +24,7 @@ function Related({ page }: { page: BodyPage }) {
   return (
     <>
       {(newer || older) && (
-        <nav aria-label="Adjacent news" className="mt-12 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
+        <nav aria-label="Adjacent news" className="mt-12 grid gap-3 sm:grid-cols-2">
           {older ? (
             <SmartLink to={older.route} href={older.href} className="group bg-white p-5 hover:bg-teal-50/60">
               <span className="flex items-center gap-2 text-meta font-semibold uppercase tracking-[0.1em] text-muted">
@@ -64,12 +65,13 @@ export function NewsArticleTemplate({ page }: { page: BodyPage }) {
         eyebrow={`News & Highlights${page.category ? ` · ${page.category}` : ''}`}
         meta={page.date ? <span>Published <time dateTime={page.date}>{formatDate(page.date)}</time></span> : null}
       />
+      <PageCanvas>
       <div className="container-page grid gap-12 py-12 md:py-16 lg:grid-cols-12">
         <motion.article
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease: ease.out }}
-          className="min-w-0 lg:col-span-8"
+          className="page-sheet min-w-0 lg:col-span-8"
         >
           {page.bodyHtml ? (
             <RichContent html={page.bodyHtml} />
@@ -83,7 +85,7 @@ export function NewsArticleTemplate({ page }: { page: BodyPage }) {
           </Suspense>
           <SourceNote official={page.official} updated={page.updated} />
         </motion.article>
-        <aside className="no-print lg:col-span-3 lg:col-start-10">
+        <aside className="side-card no-print self-start lg:sticky lg:top-32 lg:col-span-4 lg:col-start-9 xl:col-span-3 xl:col-start-10">
           <div className="lg:sticky lg:top-24">
             <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-muted">Official updates</p>
             <ul className="mt-3 space-y-2.5 text-[0.9375rem]">
@@ -96,6 +98,7 @@ export function NewsArticleTemplate({ page }: { page: BodyPage }) {
           </div>
         </aside>
       </div>
+      </PageCanvas>
     </>
   );
 }
